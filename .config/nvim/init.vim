@@ -25,6 +25,8 @@ source ~/.config/nvim/configs/plugins.vim
 
 let mapleader = 'æ'
 
+" Some comment
+
 inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<cr>x\<bs>"
 inoremap <s-left> <c-o>_
 inoremap <s-right> <c-o>$
