@@ -1,0 +1,56 @@
+snippet fun "function"
+$1 <- function($2) {
+	$0
+}
+endsnippet
+
+snippet for "for loop"
+for ($1 in $2) {
+	$0
+}
+endsnippet
+
+snippet if "if statement"
+if ($1) {
+	$0
+}
+endsnippet
+
+snippet init "load packages"
+packages = c('$1')
+lapply(packages, library, character.only = TRUE)
+
+$0
+endsnippet
+
+snippet pp "dplyr pipe" wiA
+%>%$0
+endsnippet
+
+snippet @ "Matrix Multiplication" wA
+%*%
+endsnippet
+
+snippet gg "ggplot" w
+ggplot($1, aes($2, $3)) +
+	geom_$4($5)
+endsnippet
+
+snippet df "dataframe"
+$1 <- data.frame($2)
+$0
+endsnippet
+
+snippet in "in operator"
+%in% $0
+endsnippet
+
+snippet else "else operator"
+else {
+    $0
+}
+endsnippet
+
+
+
+

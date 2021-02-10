@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/marc/.config/nvim'
+let g:netrw_dirhist_5='/Users/marc/.config'
+let g:netrw_dirhist_4='/Users/marc'
+let g:netrw_dirhist_3='/Users/marc/.config'
+let g:netrw_dirhist_2='/Users/marc'
+let g:netrw_dirhist_1='/Users/marc/.config'
+let g:netrw_dirhist_0='/Users/marc/.config/nvim'
+let g:netrw_dirhist_9='/Users/marc/.config/nvim/configs'
+let g:netrw_dirhist_8='/Users/marc/Notes/Time Series Analysis'
+let g:netrw_dirhist_7='/Users/marc/Notes/Statistics'

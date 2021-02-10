@@ -1,0 +1,310 @@
+
+# Math Context Definition
+global !p
+texMathZones = ['texMathZone' + x for x in ['A', 'AS', 'B', 'BS', 'C', 'CS',
+'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS', 'J', 'JS',
+'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z', 'AmsA', 'AmsB', 'AmsC',
+'AmsD', 'AmsE', 'AmsF', 'AmsG', 'AmsAS', 'AmsBS', 'AmsCS', 'AmsDS', 'AmsES',
+'AmsFS', 'AmsGS' ]]
+
+texIgnoreMathZones = ['texMathText']
+
+texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+
+ignore = texIgnoreMathZoneIds[0]
+
+def math():
+	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+	try:
+		first = next(
+            i for i in reversed(synstackids)
+            if i in texIgnoreMathZoneIds or i in texMathZoneIds
+        )
+		return first != ignore
+	except StopIteration:
+		return False
+endglobal
+
+# Math Snippets
+############################
+
+context "math()"
+snippet | "single vertical" iA
+\vert $0
+endsnippet
+
+context "math()"
+snippet || "double vertical" iA
+\Vert $0
+endsnippet
+
+context "math()"
+snippet null "null hypothesis"
+\text{H}_o:$1
+endsnippet
+
+context "math()"
+snippet b "beta"
+\beta
+endsnippet
+
+context "math()"
+snippet set "set"
+\big\{$1\big\}
+endsnippet
+
+context "math()"
+snippet overset "Overset" iA
+\overset{$1}{$2}$0
+endsnippet
+
+context "math()"
+snippet est "Estimate" iA
+\skew{2}\hat{$1}
+endsnippet
+
+context "math()"
+snippet ecov "Estimated Covariance" iA
+\bm{\hat{\Sigma}}
+endsnippet
+
+context "math()"
+snippet // "Fraction" iA
+\frac{$1}{$2}$0
+endsnippet
+
+context "math()"
+snippet text "Math Text" iA
+\text{$1}
+endsnippet
+
+context "math()"
+snippet rr "Reals" iA
+\mathbb{R}
+endsnippet
+
+context "math()"
+snippet bj "beta_j" iA
+\beta_j
+endsnippet
+
+context "math()"
+snippet var "variance" iA
+\sigma^2
+endsnippet
+
+context "math()"
+snippet Var "Variance" iA
+\text{Var}($1)$0
+endsnippet
+
+context "math()"
+snippet cov "covariance" iA
+\bm{\Sigma}
+endsnippet
+
+context "math()"
+snippet Cov "Covariance" iA
+\text{Cov}($1)$0
+endsnippet
+
+context "math()"
+snippet mid "Mid" iA
+\mid $0
+endsnippet
+
+context "math()"
+snippet times "multiplication" iA
+\times $0
+endsnippet
+
+context "math()"
+snippet inv "inverse" iA
+^{-1}
+endsnippet
+
+context "math()"
+snippet bm "Bold Math"
+\bm{$1}$0
+endsnippet
+
+context "math()"
+snippet tt "time index"
+_{t}$0
+endsnippet
+
+context "math()"
+snippet bigc "Left/Right Curly Brackets"
+\left\{$1\right\}
+endsnippet
+
+context "math()"
+snippet bigb "Left/Right Brackets"
+\left[$1\right]
+endsnippet
+
+context "math()"
+snippet bigp "Left/Right Parentheses"
+\left($1\right)
+endsnippet
+
+context "math()"
+snippet ss "Sample Sum" iA
+\sum_{i=1}^n
+endsnippet
+
+context "math()"
+snippet sum "Sum"
+\sum_{$1}^{$2}$0
+endsnippet
+
+context "math()"
+snippet hat "Hat"
+\hat{$1}
+endsnippet
+
+context "math()"
+snippet == "Equivalence" iA
+\equiv
+endsnippet
+
+context "math()"
+snippet tt "Subscript t" iA
+_{t}
+endsnippet
+
+context "math()"
+snippet ii "Subscript i" iA
+_{i}
+endsnippet
+
+context "math()"
+snippet _ "subscript"
+_{$1}$0
+endsnippet
+
+context "math()"
+snippet ^ "superscript"
+^{$1}
+endsnippet
+
+context "math()"
+snippet tp "transpose"
+^{\mathsmaller\prime}
+endsnippet
+
+
+# NORMAL SNIPPETS
+#######################
+
+snippet yaml "YamlHeader" bA
+---
+documentclass: article
+header-includes:
+	- \usepackage[margin=0.9in]{geometry}
+	- \usepackage{bm}
+	- \usepackage{amsmath}
+	- \usepackage[osf]{newpxtext}
+	- \usepackage[italic]{mathastext}
+	- \usepackage{multicol}
+	- \newcommand{\hideFromPandoc}[1]{#1}
+	- \hideFromPandoc{
+			\let\Begin\begin
+			\let\End\end
+		}
+	- \usepackage{amsthm}
+	- \newtheorem{theorem}{Theorem}
+	- \usepackage{mathrsfs}
+	- \usepackage{enumitem}
+	- \setlist[itemize,1]{label=$-$}
+	- \usepackage{booktabs}
+numbersections: true
+autoEqnLabels: true
+indent: true
+---
+endsnippet
+
+snippet eq "Equations" bA
+\begin{equation}
+	$1
+\end{equation}
+
+$0
+endsnippet
+
+snippet $ "InlineMath" A
+\$${1:expr}\$$0
+endsnippet
+
+snippet python "Python Code Block" bA
+\`\`\`python
+$1
+\`\`\`
+endsnippet
+
+snippet begin "Begin/End" bA
+\begin{$1}
+	$2
+\end{$1}
+endsnippet
+
+snippet def "Definition" bA
+\begin{definition}[\textbf{$1}]
+$0
+\end{definition}
+endsnippet
+
+snippet theorem "Theorem" bA
+\begin{theorem}
+$0
+\end{theorem}
+endsnippet
+
+snippet cols "Multi Column" bA
+\Begin{multicols*}{2}
+
+$1
+
+\End{multicols*}
+endsnippet
+
+snippet port "Portfolio Yaml" bA
+---
+layout: post
+title:  "$1"
+date:  	`!v strftime('%Y-%m-%d')`
+---
+$0
+endsnippet
+
+snippet table "Table" bA
+\begin{table}
+	$0
+\end{table}
+endsnippet
+
+snippet tabular "Tabular" bA
+\begin{tabular}{$1}
+		$0
+\end{tabular}
+endsnippet
+
+snippet em "Latex Emphasis" i
+\emph{$1}
+endsnippet
+
+snippet bf "Latex Bold" i
+\textbf{$1}
+endsnippet
+
+snippet mcol "Table Multicolumn" bA
+\multicolumn{$1}{$2}{$3}
+endsnippet
+
+snippet itemize "Itemize" bA
+\begin{itemize}
+	\item $0
+\end{itemize}
+endsnippet
+
