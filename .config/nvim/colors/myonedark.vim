@@ -6,8 +6,7 @@ set background=dark
 let g:colors_name = 'onedark'
 
 
-
-let s:mono1 = '#ABB2BF' "default text
+let s:mono1 = '#abb2bf' "default text
 let s:mono2 = '#7C8492'
 let s:mono3 = '#5C6370'
 

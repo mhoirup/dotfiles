@@ -4,6 +4,7 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 let g:tex_flavor="latex"
 let g:vimtex_compiler_latexmk = {'continuous' : 0}
+let g:vimtex_quickfix_mode = 0
 
 let indentLine_showFirstIndentLevel = 1
 let g:indentLine_char = '│'
@@ -14,6 +15,8 @@ if g:colors_name == 'nord'
     let g:indentLine_color_gui = '#434c5e'
 elseif g:colors_name == 'marble'
     let g:indentLine_color_gui = '#cccccc'
+elseif g:colors_name == 'github'
+    let g:indentLine_color_gui = '#eff2f6'
 endif
 
 let g:slime_target = 'tmux'
@@ -22,7 +25,7 @@ let g:slime_python_ipython = 1
 let g:slime_dont_ask_default = 1
 let g:slime_preserve_curpos = 1
 
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --ignore-case'
 let g:fzf_preview_window = ''
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5, 'border':'sharp'}}
 
@@ -51,6 +54,23 @@ elseif g:colors_name == 'marble'
         \   'fg+':     ['fg', 'Normal'   ],
         \   'bg+':     ['bg', 'Normal'   ],
         \   'hl+':     ['fg', 'Constant' ],
+        \   'info':    ['fg', 'Comment'  ],
+        \   'border':  ['fg', 'Normal'   ],
+        \   'prompt':  ['fg', 'Boolean'  ],
+        \   'pointer': ['fg', 'Boolean'  ],
+        \   'marker':  ['fg', 'Boolean'  ],
+        \   'spinner': ['fg', 'Label'    ],
+        \   'header':  ['fg', 'Comment'  ],
+        \   'gutter':  ['bg', 'Normal'   ]
+        \ }
+elseif g:colors_name == 'github'
+        let g:fzf_colors = 
+        \ { 'fg':      ['fg', 'Normal'   ],
+        \   'bg':      ['bg', 'Normal'   ],
+        \   'hl':      ['fg', 'Operator' ],
+        \   'fg+':     ['fg', 'Normal'   ],
+        \   'bg+':     ['bg', 'Normal'   ],
+        \   'hl+':     ['fg', 'Operator' ],
         \   'info':    ['fg', 'Comment'  ],
         \   'border':  ['fg', 'Normal'   ],
         \   'prompt':  ['fg', 'Boolean'  ],

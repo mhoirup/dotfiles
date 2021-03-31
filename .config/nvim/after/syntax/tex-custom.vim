@@ -1,13 +1,13 @@
 if g:colors_name == 'nord'
-
+    " << PURPLE >>
     hi link texFunction        Number
     hi link texSupportFunction texFunction
     hi link texItem            texFunction
     hi texEmphasis             guifg=#b48ead
-
-    hi link texMath           Function
-    hi link texMathAlign      texMath
-
+    " << LIGHT BLUE >>
+    hi link texMath            Function
+    hi link texMathAlign       texMath
+    " << SUBTLE >>
     hi link texSection         Comment
     hi link texSubtleDelim     texSection
     hi link texFormatText      texSection
@@ -16,140 +16,178 @@ if g:colors_name == 'nord'
     hi link texMathMeta        texSection
     hi link texMathDelim       texSection
     hi link texRefFun          texSection
-    hi link texFootNote        texSection
+    hi link texNote            texSection
     hi link texTextFormat      texSection
-
+    " << YELLOW >>
     hi link texHeading         SpecialChar
     hi link texNewLine         texHeading
-
+    hi link texNewParagraph    texHeading
+    " << GREEN >>
     hi link texEnv             Character
-
+    hi link texMonospace       Character
+    " << DARK BLUE >>
     hi link texAlignmetChar    Type
-
+    " << ORANGE >>
     hi texReference            guifg=#d08770
     hi link texHyperLink       texReference
     hi link texHyperLinkText   texReference
     hi link texBold            texReference
+    hi link texHighlight       texReference
+    " << DARK TURQUOISE >>
+    hi texSCaps                guifg=#8fbcbb
+endif
 
-elseif g:colors_name == 'marble'
-
-    hi link texFunction        Statement
-    hi link texSection         texFunction
-    hi link texBeginEnd        texFunction
-    hi link texItem            texFunction
-
-    hi link texMath Constant
-    hi link texMathDelim texMath
-    hi link texMathAlign texMath
-
-    " hi texSection         guifg=#999999
-    " hi link texSubtleDelim     texSection
-    " hi link texFormatText      texSection
-    " hi link texLabel           texSection
-    " hi link texBeginEnd        texSection
-    " hi link texMathMeta        texSection
-    " hi link texMathDelim       texSection
-    " hi link texRefFun          texSection
-    " hi link texFootNote        texSection
-
+if g:colors_name == 'github'
+    hi! link texEnvironment PreProc
+    hi! texHeading gui=bold
+    hi! texHeading gui=bold
+    
 endif
 
 
 " Syntax Specification
 
-sy match texFunction '\\documentclass'
-sy match texFunction '\\usepackage'
-sy match texFunction '\\newcommand'
-sy match texFunction '\\input'
-sy match texFunction '\\footnote\>' nextgroup=texFootNote
-sy match texFunction '\\noindent'
-
-sy match texRefFun '\\eqref\>' nextgroup=texReference conceal
-sy match texRefFun '\\ref\>' nextgroup=texReference conceal
-sy match texRefFun '\\href\>' nextgroup=texHyperLink skipwhite
-sy region texReference matchgroup=texSubtleDelim start='{' end='}' contained concealends
-sy region texHyperLink matchgroup=texSubtleDelim start='{' end='}' 
-            \ contained nextgroup=texHyperLinkText
-sy region texHyperLinkText matchgroup=texSubtleDelim start='{' end='}' 
-            \ contained
-
-sy match texComment '%.*'
-sy region texFootNote matchgroup=texSubtleDelim start='{' end='}'
-            \ contained concealends contains=texMath
-
-sy match texSupportFunction '\\newtheorem'
-sy match texSupportFunction '\\DeclareMathOperator'
-sy match texSupportFunction '\\numberwithin'
-
-sy match texItem '\\item'
-
-sy match texNewLine '\\\\'
-sy match texAlignmetChar '&'
-
-sy match texBeginEnd '\\begin\>' nextgroup=texEnv
-sy match texBeginEnd '\\end\>' nextgroup=texEnv
-sy region texEnv matchgroup=texSubtleDelim start='{' end='}' contained concealends
+syntax match texFunction '\v\\\zs\w+\ze(\\)@![\{\[]' nextgroup=texArgument
+syntax match texFunction '\v\\\zs\w+\ze(\\)@![\{\[]' nextgroup=texFuncInput
+syntax match texArgument '\[.*\]' nextgroup=texFuncInput
+syntax match texTextFormat '\v\\\zsemph|text[a-z]{2}\ze[\{]'
+syntax match texNote '\v\\\zs.*note\ze[\{\[]'
 
 
-sy match texDelimiter '{' contained
-sy match texDelimiter '{' contained
-sy match texDelimiter '\[' contained
-sy match texDelimiter '\]' contained
+syntax region texFuncInput matchgroup=texDelimiter start='{' end='}' contained
 
-sy match texSubtleDelim '\\{' contained
-sy match texSubtleDelim '\\{' contained
-sy match texSubtleDelim '\['
-sy match texSubtleDelim '\]'
+syntax match texEnvironmentDelimit '\v\\\zsbegin|end\ze[\{]' nextgroup=texEnvironment
+syntax region texEnvironment matchgroup=texDelimiter start='{' end='}' contained concealends
 
-" MATH REGIONS:
-sy region texMath      start='\$'                end='\$'              contains=@texMathElements keepend
-sy region texMath      start='\\('               end='\\)'             contains=@texMathElements keepend
-sy region texMath      start='\\\['              end='\\\]'            contains=@texMathElements keepend
-sy region texMath      start='\\begin{equation}' end='\\end{equation}' contains=@texMathElements keepend
-sy region texMathAlign start='\\begin{align}'    end='\\end{align}'    contains=@texMathElements keepend
-sy region texMath      start='\\begin{aligned}'  end='\\end{aligned}'  contains=@texMathElements keepend
-sy region texMath      start='\\begin{gather}'   end='\\end{gather}'   contains=@texMathElements keepend
-sy region texMath      start='\\begin{alignat}'  end='\\end{alignat}'  contains=@texMathElements keepend
+syntax match texComment '%.*'
+
+syntax cluster texFunctions contains=texGenericFunction,texTextFormat
+
+syntax match texSection '\v\\\zs.*section.*\ze[\{]' nextgroup=texHeading
+syntax region texHeading matchgroup=texDelimiter start='{' end='}' contained concealends
+
+syntax match texDelimiter '{|}|\[|\]' contained
+
+syntax region texInlineMath start='\\(' end='\\)'
+syntax region texInlineMath start='\$' end='\$'
 
 
 
-" Math Delimiters
-sy match texMathDelim '\$'                   contained
-sy match texMathDelim '\\('                  contained
-sy match texMathDelim '\\)'                  contained
-sy match texMathDelim '\\\['                 contained conceal
-sy match texMathDelim '\\\]'                 contained conceal
-sy match texMathDelim '\\begin{equation}'    contained conceal
-sy match texMathDelim '\\end{equation}'      contained conceal
-sy match texMathDelim '\\begin{align}'       contained conceal
-sy match texMathDelim '\\end{align}'         contained conceal
-sy match texMathDelim '\\begin{aligned}'     contained conceal
-sy match texMathDelim '\\end{aligned}'       contained conceal
-sy match texMathDelim '\\begin{gather}'      contained conceal
-sy match texMathDelim '\\end{gather}'        contained conceal
-sy match texMathDelim '\\begin{alignat}'     contained conceal
-sy match texMathDelim '\\end{alignat}'       contained conceal
 
-sy match texMathMeta '\\label{.*}' contains=texReference
-sy match texMathMeta '\\nonumber'  contained
 
-sy cluster texMathElements contains=texMathMeta,texMathText,TexMathDelim,texNewLine
+" syntax region texHeading start='{' end='}' contained concealends
 
-syntax match texTextFormat '\\emph\>' nextgroup=texEmphasis
-syntax match texTextFormat '\\underline\>' nextgroup=texUnderline
-syntax match texTextFormat '\\textbf\>' nextgroup=texBold
-syntax match texTextFormat '\\textbf\>' nextgroup=texBold contained
-syntax region texEmphasis matchgroup=texSubtleDelim start='{' end='}' contained concealends
-syntax region texBold matchgroup=texSubtleDelim start='{' end='}' contained
-syntax region texUnderline matchgroup=texSubtleDelim start='{' end='}' contained
+" syntax region texHeading matchgroup=texSubtleDelim start='{' end='}' contained concealends
 
-syntax match texSection '\\part\>' nextgroup=texHeading
-syntax match texSection '\\section\>' nextgroup=texHeading
-syntax match texSection '\\section\*' nextgroup=texHeading
-syntax match texSection '\\subsection' nextgroup=texHeading
-syntax match texSection '\\subsection\*' nextgroup=texHeading
-syntax match texSection '\\subsubsection\>' nextgroup=texHeading
-syntax match texSection '\\subsubsection\*' nextgroup=texHeading
-syntax match texSection '\\paragraph\>' nextgroup=texHeading conceal
-syntax region texHeading matchgroup=texSubtleDelim start='{' end='}' contained concealends
+"
+" syntax match texSection '\\section\>' nextgroup=texHeading
+
+
+
+" syntax match texFunction '\\documentclass'
+" syntax match texFunction '\\usepackage'
+" syntax match texFunction '\\newcommand'
+" syntax match texFunction '\\input'
+" syntax match texFunction '\\footnote\>' nextgroup=texNote 
+" syntax match texFunction '\\marginnote\>' nextgroup=texNote
+" syntax match texFunction '\\marginnote\[.*\]\>' nextgroup=texNote
+" syntax match texFunction '\\noindent'
+" syntax match texFunction '\\definecolor'
+
+" syntax match texRefFun '\\eqref\>' nextgroup=texReference conceal
+" syntax match texRefFun '\\ref\>' nextgroup=texReference conceal
+" syntax match texRefFun '\\href\>' nextgroup=texHyperLink skipwhite
+" syntax region texReference matchgroup=texSubtleDelim start='{' end='}' contained concealends
+" syntax region texHyperLink matchgroup=texSubtleDelim start='{' end='}' contained nextgroup=texHyperLinkText
+" syntax region texHyperLinkText matchgroup=texSubtleDelim start='{' end='}' contained
+
+" sy match texComment '%.*'
+" sy region texNote matchgroup=texSubtleDelim start='{' end='}' contained concealends contains=texMath,texEmphasis
+
+" sy match texSupportFunction '\\newtheorem'
+" sy match texSupportFunction '\\newtheoremstyle'
+" sy match texSupportFunction '\\DeclareMathOperator'
+" sy match texSupportFunction '\\numberwithin'
+
+" sy match texItem '\\item'
+
+" sy match texNewLine '\\\\'
+" sy match texNewParagraph '\\par'
+" sy match texAlignmetChar '&'
+
+" sy match texBeginEnd '\\begin\>' nextgroup=texEnv
+" sy match texBeginEnd '\\end\>' nextgroup=texEnv
+" sy region texEnv matchgroup=texSubtleDelim start='{' end='}' contained concealends nextgroup=texEnvArgs
+
+
+" sy match texDelimiter '{' contained
+" sy match texDelimiter '{' contained
+" sy match texDelimiter '\[' contained
+" sy match texDelimiter '\]' contained
+
+" sy match texSubtleDelim '\\{' contained
+" sy match texSubtleDelim '\\{' contained
+" sy match texSubtleDelim '\['
+" sy match texSubtleDelim '\]'
+
+" " MATH REGIONS:
+" sy region texMath      start='\$'                end='\$'              contains=@texMathElements keepend
+" sy region texMath      start='\\('               end='\\)'             contains=@texMathElements keepend
+" sy region texMath      start='\\\['              end='\\\]'            contains=@texMathElements keepend
+" sy region texMath      start='\\begin{equation}' end='\\end{equation}' contains=@texMathElements keepend
+" sy region texMathAlign start='\\begin{align}'    end='\\end{align}'    contains=@texMathElements keepend
+" sy region texMath      start='\\begin{aligned}'  end='\\end{aligned}'  contains=@texMathElements keepend
+" sy region texMath      start='\\begin{gather}'   end='\\end{gather}'   contains=@texMathElements keepend
+" sy region texMath      start='\\begin{alignat}'  end='\\end{alignat}'  contains=@texMathElements keepend
+
+
+" " Math Delimiters
+" sy match texMathDelim '\$'                   contained
+" sy match texMathDelim '\\('                  contained
+" sy match texMathDelim '\\)'                  contained
+" sy match texMathDelim '\\\['                 contained
+" sy match texMathDelim '\\\]'                 contained
+" sy match texMathDelim '\\begin{equation}'    contained
+" sy match texMathDelim '\\end{equation}'      contained
+" sy match texMathDelim '\\begin{align}'       contained
+" sy match texMathDelim '\\end{align}'         contained
+" sy match texMathDelim '\\begin{aligned}'     contained
+" sy match texMathDelim '\\end{aligned}'       contained
+" sy match texMathDelim '\\begin{gather}'      contained
+" sy match texMathDelim '\\end{gather}'        contained
+" sy match texMathDelim '\\begin{alignat}'     contained
+" sy match texMathDelim '\\end{alignat}'       contained
+
+" sy match texMathMeta '\\label{.*}' contains=texReference
+" sy match texMathMeta '\\nonumber'  contained
+
+" sy cluster texMathElements contains=texMathMeta,texMathText,TexMathDelim,texNewLine
+
+" syntax match texTextFormat '\\emph\>' nextgroup=texEmphasis
+" syntax match texTextFormat '\\emph\>' nextgroup=texEmphasis contained
+" syntax match texTextFormat '\\highlight\>' nextgroup=texHighlight
+" syntax match texTextFormat '\\highlight\>' nextgroup=texHighlight contained
+" syntax match texTextFormat '\\textsc\>' nextgroup=texSCaps
+" syntax match texTextFormat '\\texttt\>' nextgroup=texMonospace
+" syntax match texTextFormat '\\underline\>' nextgroup=texUnderline
+" syntax match texTextFormat '\\textbf\>' nextgroup=texBold
+" syntax match texTextFormat '\\textbf\>' nextgroup=texBold contained
+" syntax region texEmphasis matchgroup=texSubtleDelim start='{' end='}' contained concealends
+" syntax region texBold matchgroup=texSubtleDelim start='{' end='}' contained
+" syntax region texUnderline matchgroup=texSubtleDelim start='{' end='}' contained
+" syntax region texSCaps matchgroup=texSubtleDelim start='{' end='}' contained concealends
+" syntax region texMonospace matchgroup=texSubtleDelim start='{' end='}' contained
+" syntax region texHighlight matchgroup=texSubtleDelim start='{' end='}' contained concealends
+
+" syntax cluster texFormats contains=texTextFormat
+
+" syntax match texSection '\\part\>' nextgroup=texHeading
+" syntax match texSection '\\section\>' nextgroup=texHeading
+" syntax match texSection '\\section\*' nextgroup=texHeading
+" syntax match texSection '\\subsection' nextgroup=texHeading
+" syntax match texSection '\\subsection\*' nextgroup=texHeading
+" syntax match texSection '\\subsubsection\>' nextgroup=texHeading
+" syntax match texSection '\\subsubsection\*' nextgroup=texHeading
+" syntax match texSection '\\paragraph\>' nextgroup=texHeading conceal
+" syntax region texHeading matchgroup=texSubtleDelim start='{' end='}' contained concealends
 

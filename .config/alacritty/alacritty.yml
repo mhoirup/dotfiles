@@ -1,52 +1,69 @@
+# import:
+#     - /Users/marc/.config/alacritty/githubtheme.yml
 window:
     decorations: buttonless
     dimensions:
-        columns: 180
-        lines: 50
+        columns: 97
+        lines: 45
     padding:
         x: 15
-        y: 15
+        y: 10
     position:
-        x: 950
-        y: 400
+        x: 1500
+        y: 250
+cursor:
+    style: Block
+    blinking: Always
+    blink_interval: 500
 colors:
-    # MARBLE
+    # Nord theme
     # primary:
-    #     foreground: '#424242'
-    #     background: '#f1f1f1'
+    #     background:     '#2e3440'
+    #     foreground:     '#d8dee9'
+    #     dim_foreground: '#a5abb6'
+    # selection:
+    #     text:       CellForeground
+    #     background: '#4c566a'
+    # search:
+    #     matches:
+    #         foreground: CellBackground
+    #         background: '#88c0d0'
+    #     bar:
+    #         background: '#434c5e'
+    #         foreground: '#d8dee9'
     # normal:
-    #     black:   '#424242'
+    #     black:   '#3b4252'
     #     red:     '#bf616a'
-    #     green:   '#dbe7d5'
-    #     yellow:  '#d08770'
-    #     blue:    '#008ec4'
-    #     magenta: '#b294bb'
-    #     cyan:    '#8abeb7'
-    #     white:   '#f1f1f1'
+    #     green:   '#a3be8c'
+    #     yellow:  '#ebcb8b'
+    #     blue:    '#81a1c1'
+    #     magenta: '#b48ead'
+    #     cyan:    '#88c0d0'
+    #     white:   '#e5e9f0'
     # bright:
-    #     black:   '#cccccc'
+    #     black:   '#4c566a'
     #     red:     '#bf616a'
-    #     green:   '#dbe7d5'
-    #     yellow:  '#d08770'
-    #     blue:    '#008ec4'
-    #     magenta: '#b294bb'
-    #     cyan:    '#8abeb7'
-    #     white:   '#f1f1f1'
+    #     green:   '#a3be8c'
+    #     yellow:  '#ebcb8b'
+    #     blue:    '#81a1c1'
+    #     magenta: '#b48ead'
+    #     cyan:    '#8fbcbb'
+    #     white:   '#eceff4'
     # dim:
-    #     black:   '#cccccc'
-    #     red:     '#bf616a'
-    #     green:   '#dbe7d5'
-    #     yellow:  '#d08770'
-    #     blue:    '#008ec4'
-    #     magenta: '#b294bb'
-    #     cyan:    '#8abeb7'
-    #     white:   '#f1f1f1'
+    #     black:   '#373e4d'
+    #     red:     '#94545d'
+    #     green:   '#809575'
+    #     yellow:  '#b29e75'
+    #     blue:    '#68809a'
+    #     magenta: '#8c738c'
+    #     cyan:    '#6d96a5'
+    #     white:   '#aeb3bb'
     
-    # NORD
+    # Github theme
     primary:
-        background:     '#2e3440'
-        foreground:     '#d8dee9'
-        # dim_foreground: '#a5abb6'
+        background:     '#ffffff'
+        foreground:     '#24292E'
+        dim_foreground: '#d1d5da'
     selection:
         text:       CellForeground
         background: '#4c566a'
@@ -58,52 +75,51 @@ colors:
             background: '#434c5e'
             foreground: '#d8dee9'
     normal:
-        black:   '#3b4252'
-        red:     '#bf616a'
-        green:   '#a3be8c'
-        yellow:  '#ebcb8b'
-        blue:    '#81a1c1'
-        magenta: '#b48ead'
-        cyan:    '#88c0d0'
-        white:   '#e5e9f0'
+        black:   '#24292e'
+        red:     '#d73a49'
+        green:   '#bef5cb'
+        yellow:  '#fff5b1'
+        blue:    '#005cc5'
+        magenta: '#6f42c1'
+        cyan:    '#005cc5'
+        white:   '#ffffff'
     bright:
-        black:   '#4c566a'
-        red:     '#bf616a'
-        green:   '#a3be8c'
-        yellow:  '#ebcb8b'
-        blue:    '#81a1c1'
-        magenta: '#b48ead'
-        cyan:    '#8fbcbb'
-        white:   '#eceff4'
+        black:   '#d1d5da'
+        red:     '#d73a49'
+        green:   '#bef5cb'
+        yellow:  '#fff5b1'
+        blue:    '#005cc5'
+        magenta: '#6f42c1'
+        cyan:    '#005cc5'
+        white:   '#ffffff'
     dim:
-        black:   '#373e4d'
-        red:     '#94545d'
-        green:   '#809575'
-        yellow:  '#b29e75'
-        blue:    '#68809a'
-        magenta: '#8c738c'
-        cyan:    '#6d96a5'
-        white:   '#aeb3bb'
-
+        black:   '#d1d5da'
+        red:     '#d73a49'
+        green:   '#bef5cb'
+        yellow:  '#fff5b1'
+        blue:    '#005cc5'
+        magenta: '#6f42c1'
+        cyan:    '#005cc5'
+        white:   '#ffffff'
 font:
     normal:
-        family: Fira Code
-        style:  Medium
+        family: Operator Mono
+        style:  Book
     bold:
-        family: Fira Code
+        family: Operator Mono
         style:  Medium
     italic:
-        family: Fira Code
-        style:  Medium
+        family: Operator Mono
+        style:  Book Italic
     bold_italic:
-        family: Fira Code
-        style:  Medium
-    size: 11
+        family: Operator Mono
+        style:  Medium Italic
+    size: 12.0
     use_thin_strokes: true
-    draw_bold_text_with_bright_colors: false
+    draw_bold_text_with_bright_colors: true
     offset:
-        x: 0
-        y: 0
+        x: 1
+        y: 2
 
 # To generate control sequence: run 'xxd -psd', <mapping>, <CR>, <C-c>
 key_bindings:
@@ -113,32 +129,34 @@ key_bindings:
     - { key: Caret,    mods: Shift,          chars: ReceiveChar       }
     - { key: H,        mods: Shift,          action: ReceiveChar      }
     - { key: I,        mods: Control,        chars:  "|"              }
-    - { key: Key1,     mods: Command,        chars:  "\x02\x31"       }
-    - { key: Key2,     mods: Command,        chars:  "\x02\x32"       }
-    - { key: Key3,     mods: Command,        chars:  "\x02\x33"       }
-    - { key: Key4,     mods: Command,        chars:  "\x02\x34"       }
-    - { key: Key5,     mods: Command,        chars:  "\x02\x35"       }
-    - { key: Key6,     mods: Command,        chars:  "\x02\x36"       }
-    - { key: Key7,     mods: Command,        chars:  "\x02\x37"       }
+    # - { key: Key1,     mods: Command,        chars:  "\x02\x31"       }
+    # - { key: Key2,     mods: Command,        chars:  "\x02\x32"       }
+    # - { key: Key3,     mods: Command,        chars:  "\x02\x33"       }
+    # - { key: Key4,     mods: Command,        chars:  "\x02\x34"       }
+    # - { key: Key5,     mods: Command,        chars:  "\x02\x35"       }
+    # - { key: Key6,     mods: Command,        chars:  "\x02\x36"       }
+    # - { key: Key7,     mods: Command,        chars:  "\x02\x37"       }
     - { key: F,        mods: Command,        chars:  "\x02\x62"       }
     - { key: Key7,     mods: Control,        chars:  '\'              }
     - { key: L,        mods: Shift,          action: ReceiveChar      }
     - { key: LBracket, mods: Alt,            chars:  "["              } 
     - { key: LBracket, mods: Alt|Shift,      chars:  "{"              } 
     - { key: Left,     mods: Command,        chars:  "\x02\x70"       }
-    - { key: Period,   mods: Command|Shift,  chars:  "\x02\x3a"       }
+    - { key: Period,   mods: Command,        chars:  "\x02\x3a"       }
     - { key: RBracket, mods: Alt,            chars:  "]"              } 
     - { key: RBracket, mods: Alt|Shift,      chars:  "}"              }
     - { key: Return,   mods: Command,        action: ToggleFullscreen }
     - { key: Return,   mods: Shift,          chars: "æ?"              }
     - { key: Right,    mods: Command,        chars:  "\x02\x6e"       }
     - { key: S,        mods: Command,        chars:  "\x02\x25"       }
-    - { key: T,        mods: Command,        chars:  "\x02\x63"       }
+    # - { key: N,        mods: Command,        chars:  "\x02\x63"       }
+    - { key: N,        mods: Command,        chars:  ""               }
     - { key: V,                              action: ReceiveChar      }
     - { key: V,        mods: Control,        action: ReceiveChar      }
     - { key: V,        mods: Shift,          action: ReceiveChar      }
     - { key: W,        mods: Command,        chars:  "\x02\x78"       }
     - { key: W,        mods: Command|Shift,  chars:  "\x02\x26"       }
+    - { key: A,        mods: Control,        chars:  "@"              }
       
 # These configuration files will be loaded in order, replacing values in files
 # loaded earlier with those loaded later in the chain. The file itself will

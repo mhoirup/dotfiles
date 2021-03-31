@@ -1,22 +1,78 @@
 fun! MyStatus()
-    hi! link GrayedOut Comment
-    if g:colors_name == 'nord'
-        hi StatusLine guifg=#ebcb8b guibg=#2e3440
-    elseif g:colors_name == 'marble'
-        hi link StatusLine Constant
+    if g:colors_name == 'marble'
+        hi! link GrayedOut  Normal
+        hi! link StatusLine Normal
+    elseif g:colors_name == 'nord'
+        hi! link GrayedOut Comment
+    elseif g:colors_name == 'github'
+        hi! link GrayedOut  Normal
+        hi! link StatusLine Normal
     endif
+    let path = expand('%:h')
+    let file = expand('%:t')
     if &ft == 'fzf' || &ft == 'floaterm'
-        hi! link StatusLine EndOfBuffer
-        hi! link GrayedOut EndOfBuffer
+        let path = expand('#:h')
+        let file = expand('#:t')
     endif
-    let statusline = ''
-    let statusline .= '%#GrayedOut#'
-    let statusline .= ''. expand('%:h') .'/'
-    let statusline .= '%#StatusLine#'
-    let statusline .= ''. expand('%:t')
-    let statusline .= '%='
-    let statusline .= '  %3p%%  %4l:%-3c'
+    let statusline = '%#StatusLine#'
+    let statusline .= ''
+    if expand('%') != ''
+        let statusline .= '%#GrayedOut#'
+        let statusline .= ''.path.'/'
+        let statusline .= '%#StatusLine#'
+        let statusline .= ''.file
+        let statusline .= '%='
+        if &ft == 'tex' && len(getqflist()) > 0
+            let statusline .= ''.len(getqflist()).'E '
+        endif
+        let statusline .= '%#GrayedOut#'
+        let statusline .= '%4l:%-2c '
+    endif
     return statusline
+endfun
+
+function! MyTabLine()
+  let tabline = ''
+  for i in range(tabpagenr('$'))
+    let tabnr = i + 1 " range() starts at 0
+    let winnr = tabpagewinnr(tabnr)
+    let buflist = tabpagebuflist(tabnr)
+    let bufnr = buflist[winnr - 1]
+    let bufname = fnamemodify(bufname(bufnr), ':t')
+    if &ft == 'fzf' || &ft == 'floaterm'
+        let bufname = expand('#:t')
+    endif 
+    let tabline .= '%' . tabnr . 'T'
+    let tabline .= (tabnr == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
+    let n = tabpagewinnr(tabnr,'$')
+    let tabline .= empty(bufname) ? ' [No Name] ' : ' ' . bufname . ' '
+    " let bufmodified = getbufvar(bufnr, "&mod")
+    " if bufmodified | let tabline .= '+ ' | else | let tabline .= '  ' | endif
+  endfor
+  let tabline .= '%#TabLineFill#'
+  return tabline
+endfunction
+
+fun! PreviousBuffer()
+    let prevbuf = bufnr('#')
+    let tab = 0
+    for i in range(1, tabpagenr('$'))
+        for buf in tabpagebuflist(i)
+            if buf == prevbuf
+                let tab = i
+            endif
+        endfor
+    endfor
+    if tab != 0
+        execute 'tabn '.tab
+    else
+        execute 'b#'
+    endif
+endfun
+
+fun! TermBelow()
+    belowright
+    term
 endfun
 
 fun! InteractiveConsole(command)
@@ -36,11 +92,11 @@ fun! InteractiveConsole(command)
     startinsert
 endfun
 
-fun! InitInteractive(direction)
+fun! InitInteractive(command, direction)
     let new_pane = str2nr(system('tmux display-message -p "#{window_panes}"')) + 1
     let command = 'tmux split-window '.a:direction.' -d nvim '
-    call system(command . '"+call InteractiveConsole('.g:interactive[&ft].')"')
-    let g:slime_default_config = {"socket_name": "default", "target_pane": ':.'.new_pane}
+    call system(command . '"+call InteractiveConsole('.a:command.')"')
+    let b:slime_default_config = {"socket_name": "default", "target_pane": ':.'.new_pane}
 endfun
 
 fun! SendToRepl()
@@ -77,7 +133,7 @@ fun! SourceConf()
 endfun
 
 fun! SuperTab()
-    " Simlpe function initiate an UltiSnip jump, and if not executed, toggle
+    " Simple function to initiate an UltiSnip jump, and if not executed, toggle
     " the completion menu
     let g:ulti_expand_or_jump_res = 0
     call UltiSnips#ExpandSnippetOrJump()
@@ -95,6 +151,32 @@ fun! LinkGit()
     exe 'redir @+ | silent! echo "'.b:link.'" | redir END'
 endfun
 
+let g:quickfix_is_open = 0
+function! QuickfixToggle()
+    if g:quickfix_is_open
+        set laststatus=2
+        cclose
+        let g:quickfix_is_open = 0
+        execute g:quickfix_return_to_window . "wincmd w"
+    elseif len(getqflist()) > 0
+        set laststatus=2
+        let g:quickfix_return_to_window = winnr()
+        copen
+        let g:quickfix_is_open = 1
+        wincmd p
+    endif
+endfunction
 
+fun! IsIndent(line, indentation)
+    let first_chars = strcharpart(strpart(getline(a:line + 0), col(0) - 1), 0, a:indentation)
+    return first_chars == repeat(' ', a:indentation) && strlen(first_chars) != 0
+endfun
 
+fun! IsIt()
+    if IsIndent(line('.'), 4)
+        echo 'indentation'
+    else
+        echo 'no indentation'
+    endif
+endfun
 

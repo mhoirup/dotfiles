@@ -1,23 +1,14 @@
-if g:colors_name == 'onedark'
-    hi link vimOper Normal
-    hi link vimGroup VimOper
-    hi link vimHiGroup VimOper
-    hi link vimHiClear VimOper
-
-    hi link vimString Character
-
-    hi link vimFunction Function
-    hi link vimUserFunc vimFunction
+if g:colors_name == 'theta'
+    hi link VimUserFunc VimFuncName
+    hi link VimOper     Normal
 endif
 
-
-
-
-
-hi! link vimIsCommand Statement
-hi! link vimAutoEvent Normal
-
 syntax match vimVar 'for'
+syntax match vimNotFunc 'endif'
+syntax match vimNotFunc 'endfun'
+syntax match vimNotFunc 'fun '
+syntax match vimNotFunc 'fun!'
 syntax match vimExclamation '!'
 
 syntax match vimPath '~/.*/'
+syntax match vimEnvironment '*\:'

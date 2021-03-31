@@ -1,40 +1,33 @@
-nnoremap <silent> <s-b> :write<bar>VimtexCompile<CR>
-nnoremap <buffer> j gj
-nnoremap <buffer> k gk
-nnoremap <buffer> $ g$
-nnoremap <buffer> 0 g0
-nnoremap <buffer> <s-i> ^i
-inoremap <s-left> <c-o><s-left>
-inoremap <s-right> <esc>g$i
-inoremap <leader>? <c-g>u<esc>[s1z=`]a<c-g>u
-inoremap <bs> <esc>xi
-nnoremap <expr> <silent> <leader>f b:zen == 1 ? ':Goyo!<bar>let b:zen = 0<cr>':':Goyo 100<bar>let b:zen = 1<cr>'
-let b:zen = 0
+if !exists('g:vscode')
+    inoremap <bs> <esc>xi
+    inoremap <leader>? <c-g>u<esc>[s1z=`]a<c-g>u
+    inoremap <s-left> <c-o><s-left>
+    inoremap <s-right> <esc>g$i
+    nnoremap <silent> <leader>e :call QuickfixToggle()<cr>
+    nnoremap <silent> <s-b> :write<bar>VimtexCompile<cr><cr>
+    nnoremap <silent> <leader>c :VimtexClean<cr><cr>
+    nnoremap <buffer> <silent> <leader>s :call ToggleSpelling()<cr>
 
+    fun! ToggleSpelling()
+        if exists('b:spcheck')
+            exe 'setlocal nospell | unlet b:spcheck'
+        else
+            exe 'setlocal spell | let b:spcheck = 1'
+        endif
+    endfun
 
-autocmd! User GoyoEnter nested set nonumber
-autocmd! User GoyoLeave nested so ~/.config/nvim/init.vim | edit | set nonumber
+    setlocal spelllang=da,en_gb
+    set linebreak
+    set tw=75
+    set nowrap
+    set syntax=tex-custom
+    set conceallevel=1
 
-setlocal spell
-set spelllang=da,en_gb
-set linebreak
-setlocal nonumber
-set tw=90
-set syntax=tex-custom
-set conceallevel=1
-
-fun! SelectWord(word)
-  exe 'normal! "_ciw'.a:word
-endfun
-
-fun! WordSuggestions()
-  let suggestions = spellsuggest(expand("<cword>"))
-  return fzf#run({'source': suggestions, 'sink': function("SelectWord"), 'down': 10 })
-endfun
-
-nnoremap <silent> <leader>s :call WordSuggestions()<CR>
-
-if has('nvim') || has('gui_running')
-  autocmd! FileType fzf
-  autocmd  FileType fzf set laststatus=0 | autocmd WinLeave <buffer> set laststatus=2
+    fun! AsImage(name)
+        let path = expand('%:p:r')
+        exe '! pdfcrop '.path.'.pdf'
+        exe '! convert -density 300 '.path.'-crop.pdf -quality 90 ~/mhoirup.github.io/images/'.a:name.'-equations.png'
+    endfun
+    command! -nargs=1 AsImage call AsImage(<f-args>)
 endif
+

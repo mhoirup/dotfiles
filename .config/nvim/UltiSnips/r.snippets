@@ -36,11 +36,6 @@ ggplot($1, aes($2, $3)) +
 	geom_$4($5)
 endsnippet
 
-snippet df "dataframe"
-$1 <- data.frame($2)
-$0
-endsnippet
-
 snippet in "in operator"
 %in% $0
 endsnippet
@@ -49,6 +44,10 @@ snippet else "else operator"
 else {
     $0
 }
+endsnippet
+
+snippet df "data frame" i
+data.frame($1)$0
 endsnippet
 
 

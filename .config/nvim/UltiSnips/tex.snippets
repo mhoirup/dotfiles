@@ -34,22 +34,85 @@ endglobal
 # `!p snip.rv = match.group(1)`
 # endsnippet
 
-
-snippet init "initialise" bA
+snippet init "start tex document" b
 \input{../preamble.tex}
 
 \begin{document}
-
-\section{$1}
-
-\begin{multicols}{2}
 	$0
-
-\end{multicols}
-
 \end{document}
 endsnippet
 
+# Document headers
+# =================
+snippet sec "section" bA
+\section{$1}
+$0
+endsnippet
+
+snippet subsec "subsection" bA
+\subsection{$1}
+$0
+endsnippet
+
+snippet subsub "subsubsection" bA
+\subsubsection{$1}
+$0
+endsnippet
+
+# Text formatting
+snippet hi "highlight" i
+\highlight{$1} $0
+endsnippet
+snippet sc "small caps" i
+\textsc{$1}$0
+endsnippet
+snippet em "emphasis" i
+\emph{$1}$0
+endsnippet
+snippet bf "bold text" i
+\textbf{$1}$0
+endsnippet
+
+# Math environments
+snippet eq "display math" bA
+\begin{equation}
+	$1
+\end{equation}
+$0
+endsnippet
+snippet align "align display math" bA
+\begin{align}
+	$1
+\end{align}
+$0
+endsnippet
+snippet gather "gather display math" bA
+\begin{gather}
+	$1
+\end{gather}
+$0
+endsnippet
+
+snippet iif "if and only if" iA
+if and only if
+endsnippet
+
+snippet wrt "with respect to"
+with respect to $0
+endsnippet
+
+snippet ie "id est"
+i.e. $0
+endsnippet
+
+snippet eg "exempli gratia"
+e.g. $0
+endsnippet
+
+snippet par "new paragraph"
+\par
+$0
+endsnippet
 
 snippet begin "begin/end" bA
 \begin{$1}
@@ -63,71 +126,20 @@ snippet begin "begin/end manual" i
 \end{$1}
 endsnippet
 
-
-snippet theorem "theorem" bA
+snippet theo "theorem" bA
 \begin{theorem}[$1]
 	$0
 \end{theorem}
 endsnippet
 
-
-snippet eq "display math" bA
-\begin{equation}
-	$1
-\end{equation}
-$0
-endsnippet
-
-snippet align "align display math" bA
-\begin{align}
-	$1
-\end{align}
-$0
-endsnippet
-
-snippet gather "gather display math" bA
-\begin{gather}
-	$1
-\end{gather}
-$0
-endsnippet
-
-snippet em "emphasis" i
-\emph{$1}
-endsnippet
-
-priority 100
-snippet ul "bold text" i
-\underline{$1}$0
+snippet def "definition" bA
+\begin{definition}[$1]
+	$0
+\end{definition}
 endsnippet
 
 
-priority 100
-snippet bf "bold text" i
-\textbf{$1}$0
-endsnippet
 
-snippet sec "section" bA
-\section{$1}
-
-$0
-endsnippet
-
-snippet subsec "subsection" bA
-\subsection{$1}
-
-$0
-endsnippet
-
-snippet subsub "subsubsection" bA
-\subsubsection{$1}
-
-$0
-endsnippet
-
-snippet para "paragraph" bA
-\paragraph{$1} $0
-endsnippet
 
 snippet table "tabular" b
 \begin{table}
@@ -164,12 +176,34 @@ snippet $ "inline math" wA
 \($1\) $0
 endsnippet
 
-# Math Snippets
+# MATH SNIPPETS
+## Greek letters
 context "math()"
-snippet fun "generic function" i
-\\$1{$0}
+snippet al "alpha" i
+\alpha
 endsnippet
 
+context "math()"
+snippet bb "bold beta" iA
+\bm{\beta}
+endsnippet
+
+context "math()"
+snippet de "delta" i
+\delta
+endsnippet
+
+context "math()"
+snippet svar "variance" i
+\hat{\sigma}^2
+endsnippet
+
+context "math()"
+snippet var "variance" i
+\sigma^2
+endsnippet
+
+## Math functions
 context "math()"
 snippet pr "probability" i
 \Pr($1)$0
@@ -177,12 +211,12 @@ endsnippet
 
 context "math()"
 snippet abs "absolute value" i
-\lvert $1 \rvert $0
+\lvert $1\rvert$0
 endsnippet
 
 context "math()"
 snippet .. "dots" iA
-\ldots,$0
+\ldots$0
 endsnippet
 
 context "math()"
@@ -196,11 +230,6 @@ snippet <= "less than or equal" iA
 endsnippet
 
 context "math()"
-snippet s "sigma" i
-\sigma
-endsnippet
-
-context "math()"
 snippet int "integration" i
 \int_{$1}^{$2}$0
 endsnippet
@@ -211,8 +240,8 @@ snippet exp "exponent" i
 endsnippet
 
 context "math()"
-snippet al "alpha" i
-\alpha
+snippet --> "long right arrow" iA
+\longrightarrow
 endsnippet
 
 context "math()"
@@ -220,26 +249,19 @@ snippet inf "infinity" i
 \infty
 endsnippet
 
-
 context "math()"
-snippet zz "exponent" iA
-\mathbb{Z}
+snippet E "expectation" i
+E($1)$0
 endsnippet
 
 context "math()"
 snippet ln "logarithm" i
-\ln($1)$0
+\ln$0
 endsnippet
 
 context "math()"
-snippet avar "dots" iA
-\text{Avar}($1)$0
-endsnippet
-
-context "math()"
-snippet lab "label" wA
-\label{eq:$1}
-$0
+snippet lab "label" w
+\label{eq:$1}$0
 endsnippet
 
 context "math()"
@@ -253,12 +275,7 @@ snippet | "conditional" iA
 endsnippet
 
 context "math()"
-snippet tt "index (time)" iA
-_{t}
-endsnippet
-
-context "math()"
-snippet . "index (time)" i
+snippet . "centered dot" i
 \cdot
 endsnippet
 
@@ -288,7 +305,7 @@ snippet ip "inner product" i
 endsnippet
 
 context "math()"
-snippet sc "right arrow" i
+snippet scr "right arrow" i
 \mathscr{$1}$0
 endsnippet
 
@@ -298,24 +315,13 @@ snippet hat "hat" i
 endsnippet
 
 context "math()"
-snippet Cov "Covariance" i
-\text{Cov}($1,$2)$0
-endsnippet
-
-context "math()"
-snippet rr "reals" iA
-\mathbb{R}
-endsnippet
-
-context "math()"
-snippet O "Omega" i
-\Omega
-endsnippet
-
-
-context "math()"
 snippet // "fraction" iA
 \frac{$1}{$2}$0
+endsnippet
+
+context "math()"
+snippet rr "reals" i
+\mathbb{R}
 endsnippet
 
 context "math()"
@@ -329,18 +335,13 @@ snippet asim "asymptotic distribution" i
 endsnippet
 
 context "math()"
-snippet ii "index" iA
-_{i}$0
+snippet ssi "sample sum index i" wA
+\sum_{i=1}^N $0
 endsnippet
 
 context "math()"
-snippet tilde "tilde" i
-\tilde{$1}$0
-endsnippet
-
-context "math()"
-snippet ss "sample sum" wA
-\sum_{i=1}^n $0
+snippet sst "sample sum index t" wA
+\sum_{t=1}^T $0
 endsnippet
 
 context "math()"
@@ -348,22 +349,10 @@ snippet sum "sum" i
 \sum_{$1}^{$2} $0
 endsnippet
 
-
 context "math()"
 snippet == "equivalence" iA
 \equiv $0
 endsnippet
-
-context "math()"
-snippet text "text" wA
-\text{$1}$0
-endsnippet
-
-context "math()"
-snippet o "text" i
-\omega
-endsnippet
-
 
 context "math()"
 snippet * "times" i
@@ -376,7 +365,7 @@ snippet sqrt "square root" i
 endsnippet
 
 context "math()"
-snippet sup "superscript" i
+snippet sp "superscript" i
 ^{$1}$0
 endsnippet
 
@@ -386,18 +375,69 @@ _{$1}$0
 endsnippet
 
 context "math()"
-snippet var "variance" iA
-\sigma^2 $0
-endsnippet
-
-context "math()"
-snippet set "set" i
+snippet bigset "big set" i
 \left\\{$1\right\\}$0
 endsnippet
 
 context "math()"
-snippet mcal "math caligraphy" iA
-\mathcal{$1}$0
+snippet set "set" i
+\\{$1\\}$0
+endsnippet
+
+context "math()"
+snippet tp "transpose" iA
+^{\mathsmaller{\prime}}$0
+endsnippet
+
+context "math()"
+snippet != "not equal" iA
+\neq
+endsnippet
+
+context "math()"
+snippet inv "Inverse" iA
+^{-1}
+endsnippet
+
+context "math()"
+snippet sim "distribution" i
+\sim $0
+endsnippet
+
+context "math()"
+snippet bx "bold x" iA
+\bm{x}
+endsnippet
+
+context "math()"
+snippet by "bold x" iA
+\bm{y}
+endsnippet
+
+context "math()"
+snippet bh "bold with hat" i
+\hat{\bm{$1}}$0
+endsnippet
+
+context "math()"
+snippet est "adjusted hat for letters" i
+\skew{2}\hat{$1}$0
+endsnippet
+
+context "math()"
+snippet hyp "hypothesis" i
+\text{H}_{$1}: $0
+endsnippet
+
+## Math text
+context "math()"
+snippet text "text" wA
+\text{$1}$0
+endsnippet
+
+context "math()"
+snippet Cov "Covariance" i
+\text{Cov}($1,$2)$0
 endsnippet
 
 context "math()"
@@ -405,39 +445,28 @@ snippet Var "Variance" i
 \text{Var}($1)$0
 endsnippet
 
+## Brackets
 context "math()"
-snippet bz "bold z" iA
-\bm{z}
+snippet bigp "large parentheses" iA
+\left($1\right)$0
 endsnippet
 
 context "math()"
-snippet bp "large parentheses" iA
-\left($1 \right) $0
+snippet bigb "large bracket" iA
+\left[$1\right]$0
 endsnippet
 
-context "math()"
-snippet bb "large bracket" iA
-\left[$1 \right] $0
-endsnippet
 
-context "math()"
-snippet bc "large curly bracket" iA
-\left{$1 \right} $0
-endsnippet
+
+
+
+
+
  
-context "math()"
-snippet tp "transpose" iA
-^{\mathsmaller{\prime}}$0
-endsnippet
 
 context "math()"
-snippet g "gamma" i
+snippet ga "gamma" i
 \gamma
-endsnippet
-
-context "math()"
-snippet != "not equal" iA
-\neq
 endsnippet
 
 context "math()"
@@ -451,63 +480,6 @@ snippet la "lamda" i
 endsnippet
 
 context "math()"
-snippet La "Lamda" i
-\Lambda
-endsnippet
-
-
-context "math()"
-snippet ups "upsilon" i
-\upsilon
-endsnippet
-
-context "math()"
-snippet inv "Inverse" iA
-^{-1}
-endsnippet
-
-context "math()"
-snippet cov "covariance" iA
-\text{Cov}($1)$0
-endsnippet
-
-context "math()"
-snippet sim "distribution" i
-\sim $1($2,$3)$0
-endsnippet
-
-context "math()"
-snippet bx "bold x" iA
-\bm{x}
-endsnippet
-
-context "math()"
-snippet by "bold x" iA
-\bm{y}
-endsnippet
-
-
-context "math()"
-snippet bb "bold x" iA
-\bm{\beta}
-endsnippet
-
-context "math()"
-snippet bhb "bold x" iA
-\bm{\hat{\beta}}
-endsnippet
-
-context "math()"
-snippet est "adjusted hat" i
-\skew{2}\hat{$1}$0
-endsnippet
-
-context "math()"
-snippet hyp "hypothesis" i
-\text{H}_{$1}: $0
-endsnippet
-
-context "math()"
 snippet b "beta" i
 \beta
 endsnippet
@@ -518,13 +490,8 @@ snippet th "theta" i
 endsnippet
 
 context "math()"
-snippet Th "theta" i
+snippet Th "Theta" i
 \Theta
-endsnippet
-
-context "math()"
-snippet mu "mu" i
-\mu
 endsnippet
 
 context "math()"
@@ -533,38 +500,21 @@ snippet ph "phi" i
 endsnippet
 
 context "math()"
-snippet Ph "Phi" i
-\Phi
-endsnippet
-
-context "math()"
-snippet de "delta" i
-\delta
-endsnippet
-
-context "math()"
-snippet De "Delta" i
-\Delta
-endsnippet
-
-context "math()"
 snippet par "partial" i
 \partial
 endsnippet
 
 context "math()"
-snippet ch "chi-squared" i
+snippet chisq "chi-squared" i
 \chi^2
-endsnippet
-
-context "math()"
-snippet si "sigma" i
-\sigma
 endsnippet
 
 context "math()"
 snippet nn "no numbering"
 \nonumber
-$0
 endsnippet
 
+context "math()"
+snippet := "defined as" iA
+\coloneqq
+endsnippet
