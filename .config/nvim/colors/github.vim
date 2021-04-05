@@ -26,16 +26,17 @@ hi! link MoreMsg             Normal
 hi! link Question            Normal
 hi! link Special             Normal
 hi! link StatusLine          Normal
+hi! link TabLine             Normal
+hi! link TabLineFill         Normal
 hi! link Title               Normal
 hi! link Type                Normal
 hi! link VertSplit           Normal
 hi! link pythonClassVar      Normal
 hi! link qfFileName          Normal
 hi! link qfLineNr            Normal
-hi! link vimVar              Normal
+hi! link texEnvironment      Normal
 hi! link vimLet              Normal
-hi! link TabLineFill         Normal
-hi! link TabLine             Normal
+hi! link vimVar              Normal
 
 execute 'hi TabLineSel guifg='.s:black.' guibg='.s:white. ' gui=bold'
 
@@ -51,17 +52,18 @@ hi! link texTextFormat       Statement
 hi! link vimFuncOper         Statement
 
 execute 'hi Preproc guifg='.s:purple.' guibg='.s:white
+hi! link pythonClass         Preproc
 hi! link pythonFunction      Preproc
 hi! link pythonFunctionCall  Preproc
-hi! link pythonClass         Preproc
+hi! link rFunction           Preproc
 hi! link texHeading          Preproc
 hi! link texHyperLink        Preproc
 hi! link texHyperLinkText    Preproc
 hi! link vimFuncName         Preproc
 hi! link vimUserFunc         Preproc
-hi! link rFunction           Preproc
 
 execute 'hi Constant guifg='.s:dark_blue.' guibg='.s:white
+hi! link texNote             Constant
 
 execute 'hi Identifier guifg='.s:orange.' guibg='.s:white
 hi! link PythonArgument      Identifier
@@ -80,12 +82,13 @@ hi! link pythonBoolean       vimCommand
 hi! link pythonBuiltin       vimCommand
 hi! link pythonBuiltinFunc   vimCommand
 hi! link pythonNone          vimCommand
+hi! link rPreProc            vimCommand
+hi! link rType               vimCommand
+hi! link texInlineMath       vimCommand
 hi! link texMath             vimCommand
 hi! link texRefFun           vimCommand
 hi! link vimIsCommand        vimCommand
 hi! link vimNotFunc          vimCommand
-hi! link rPreProc            vimCommand
-hi! link rType               vimCommand
 hi! link yamlBlockMappingKey vimCommand
 
 execute 'hi Comment guifg='.s:dark_gray.' guibg='.s:white
@@ -101,8 +104,6 @@ hi! link VisualNOS           Visual
 execute 'hi CursorLine guibg='.s:white
 
 execute 'hi MatchParen guibg='.s:light_green
-
-execute 'hi texNote guifg='.s:orange
 
 execute 'hi ErrorMsg guifg='.s:black.' guibg='s:light_red
 hi! link Error               ErrorMsg

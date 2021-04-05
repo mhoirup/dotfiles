@@ -17,6 +17,7 @@ Plug 'vim-python/python-syntax'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'voldikss/vim-floaterm'
 Plug 'karb94/neoscroll.nvim'
+Plug 'arzg/vim-substrata'
 
 call plug#end()
 

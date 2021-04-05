@@ -37,24 +37,44 @@ if g:colors_name == 'nord'
     hi texSCaps                guifg=#8fbcbb
 endif
 
-if g:colors_name == 'github'
-    hi! link texEnvironment PreProc
-    hi! texHeading gui=bold
-    hi! texHeading gui=bold
+" if g:colors_name == 'github'
+"     hi! link 
+"     hi! link texEnvironment PreProc
+"     hi! texHeading gui=bold
+"     hi! texHeading gui=bold
     
-endif
+" endif
 
 
 " Syntax Specification
 
 syntax match texFunction '\v\\\zs\w+\ze(\\)@![\{\[]' nextgroup=texArgument
-syntax match texFunction '\v\\\zs\w+\ze(\\)@![\{\[]' nextgroup=texFuncInput
+syntax match texFunction '\v\\\zs\w+\ze(\\)@![\{\[]'
+syntax match texFunction '\v\\\zsmarginnote\ze[\{]' nextgroup=texNote
+
 syntax match texArgument '\[.*\]' nextgroup=texFuncInput
 syntax match texTextFormat '\v\\\zsemph|text[a-z]{2}\ze[\{]'
-syntax match texNote '\v\\\zs.*note\ze[\{\[]'
+
+syntax region texNote matchgroup=texDelimiter start='{' end='}'
 
 
-syntax region texFuncInput matchgroup=texDelimiter start='{' end='}' contained
+
+" syntax match texNote '\v\\\zs.*note\ze[\{\[]'
+
+" syntax match texNote '\v\\.*note[\{]\zs\w+\ze[\}]'
+
+
+
+
+
+
+
+syntax match texHyperLink '\v\\href\zs[\{]\w+\ze[\}]'
+
+
+" syntax region texHyperLink matchgroup=texSubtleDelim start='{' end='}' contained nextgroup=texHyperLinkText
+" syntax region texHyperLinkText matchgroup=texSubtleDelim start='{' end='}' contained
+
 
 syntax match texEnvironmentDelimit '\v\\\zsbegin|end\ze[\{]' nextgroup=texEnvironment
 syntax region texEnvironment matchgroup=texDelimiter start='{' end='}' contained concealends

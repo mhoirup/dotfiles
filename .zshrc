@@ -5,11 +5,6 @@
 export ZSH="/Users/marc/.oh-my-zsh"
 export FZF_DEFAULT_COMMAND='rg --files --hidden' 
 
-# Marble theme
-# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-#  --color=gutter:#f1f1f1,bg+:#f1f1f1,fg+:#424242
-#  --color=hl:#008ec4,hl+:#008ec4,pointer:#008ec4
-#  --color=prompt:#008ec4,info:#999999,bg:#f1f1f1'
 # Nord theme
 # export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 #  --color=gutter:#2e3440,bg+:#2e3440,fg+:#d8dee9
@@ -22,7 +17,6 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
  --color=hl:#d73a49,hl+:#d73a49,pointer:#24292e
  --color=prompt:#24292e,info:#d1d5da,bg:#ffffff'
  
-
 ZSH_THEME="robbyrussell"
 
 export EDITOR='nvim'
