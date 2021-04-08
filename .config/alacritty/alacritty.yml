@@ -4,12 +4,12 @@ window:
     decorations: buttonless
     dimensions:
         columns: 97
-        lines: 45
+        lines: 44
     padding:
         x: 15
         y: 10
     position:
-        x: 1500
+        x: 1550
         y: 250
 cursor:
     style: Block
@@ -114,7 +114,7 @@ font:
     bold_italic:
         family: Operator Mono
         style:  Medium Italic
-    size: 12.0
+    size: 12.5
     use_thin_strokes: true
     draw_bold_text_with_bright_colors: true
     offset:

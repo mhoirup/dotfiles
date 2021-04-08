@@ -25,12 +25,6 @@ fun! SaveAndExitBuffer()
     call VSCodeNotify('workbench.action.closeActiveEditor')
 endfun
 
-fun! FileExplorer()
-    call VSCodeNotify('workbench.action.terminal.new')
-    call VSCodeNotify('workbench.action.terminal.renameWithArg', { 'name': "Ranger\u000D"})
-    call VSCodeNotify('workbench.action.terminal.sendSequence', { 'text': "ranger\u000D"})
-endfun
-
 fun! ClearTerminal()
     call VSCodeNotify('workbench.action.terminal.clear')
     call VSCodeNotify('workbench.action.focusPreviousGroup')
@@ -53,8 +47,6 @@ nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'qu
 nmap + <S-o><ESC>j
 nmap <silent> * *``
 nmap <S-g> Gzz
-nmap <S-j> 10j
-nmap <S-k> 10k
 nmap <S-tab> <<
 nmap <TAB> >>
 nmap <silent> <ESC> :noh<cr>
@@ -63,12 +55,9 @@ nmap gc  <Plug>VSCodeCommentary
 nmap gcc <Plug>VSCodeCommentaryLine
 omap gc  <Plug>VSCodeCommentary
 vmap <S-Tab> <gv
-vmap <S-j> 10j
-vmap <S-k> 10k
+vmap <S-j> 5j
+vmap <S-k> 5k
 vmap <Tab> >gv
-nnoremap <silent> <S-l> :tabn<CR>
-nnoremap <silent> <S-h> :tabp<CR>
 xmap gc  <Plug>VSCodeCommentary
-nmap <silent> <S-p> :call FileExplorer()<CR>
 vmap x d
 

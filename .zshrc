@@ -47,11 +47,15 @@ function gprojects {
 }
 
 function dotfiles {
+    cp /Users/marc/Library/Application\ Support/Code/User/keybindings.json ~/.code
+    cp /Users/marc/Library/Application\ Support/Code/User/settings.json ~/.code
+    cp /Users/marc/Library/Application\ Support/Code/User/snippets ~/.code
     git add .config/nvim
     git add .config/alacritty/alacritty.yml
     git add .config/ranger
     git add .tmux.conf
     git add .zshrc
+    git add .RProfile
     git commit -m "$1"
     git push -u origin main
 }

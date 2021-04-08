@@ -13,6 +13,16 @@ if g:colors_name == 'marble'
     hi! link rType     Statement
 endif
 
+syntax match rType '\zsdata\ze[\(]'
+syntax match rType '\zsc\ze[\(]'
+
+syntax clear rRegion
+syntax clear rError
+syntax match rArgument "\v[\(\,]\s{-}\zs\w+\ze\s{-}\=(\=)@!"
+
+
+" \v\\\zs\w+\ze(\\)@![\{\[]
+
 " syntax match rArgument '\v[\(\,]\s{-}\zs\w+\ze\s{-}\=(\=)@!(\_s)@!'
 " syntax match rArgument '\v[\(\,]\s{-}\zs\w+\ze\s{-}\=(\=)@!'
 

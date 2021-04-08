@@ -5,19 +5,18 @@ Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips'
 Plug 'Yggdroot/indentLine'
 Plug 'arcticicestudio/nord-vim'
-" Plug 'christoomey/vim-tmux-navigator'
-" Plug 'jpalardy/vim-slime'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
-" Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-python/python-syntax'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'voldikss/vim-floaterm'
 Plug 'karb94/neoscroll.nvim'
-Plug 'arzg/vim-substrata'
 
 call plug#end()
 
@@ -71,6 +70,8 @@ vnoremap <S-j> 10j
 vnoremap <S-k> 10k
 vnoremap <Tab> >gv
 vnoremap <leader>f zf
+
+command! RunTime FloatermNew ranger /usr/local/Cellar/neovim/HEAD-5b5848f/share/nvim/runtime
 
 autocmd FileType fzf set laststatus=2
 " autocmd VimEnter * if @% == '' && &ft == '' | Files ~

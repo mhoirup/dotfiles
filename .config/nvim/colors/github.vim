@@ -50,6 +50,7 @@ hi! link pythonStatement     Statement
 hi! link texFunction         Statement
 hi! link texTextFormat       Statement
 hi! link vimFuncOper         Statement
+hi! link rDollar             Statement
 
 execute 'hi Preproc guifg='.s:purple.' guibg='.s:white
 hi! link pythonClass         Preproc
@@ -68,6 +69,7 @@ hi! link texNote             Constant
 execute 'hi Identifier guifg='.s:orange.' guibg='.s:white
 hi! link PythonArgument      Identifier
 hi! link pythonStrFormat     Identifier
+hi! link rArgument           Identifier
 
 execute 'hi vimOper guifg='.s:red.' guibg='.s:white
 hi! link pythonInclude       vimOper
@@ -90,6 +92,7 @@ hi! link texRefFun           vimCommand
 hi! link vimIsCommand        vimCommand
 hi! link vimNotFunc          vimCommand
 hi! link yamlBlockMappingKey vimCommand
+hi! link rNumber             vimCommand
 
 execute 'hi Comment guifg='.s:dark_gray.' guibg='.s:white
 hi! link texMathDelim        Comment
