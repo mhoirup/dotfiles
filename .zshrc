@@ -50,6 +50,7 @@ function dotfiles {
     cp /Users/marc/Library/Application\ Support/Code/User/keybindings.json ~/.code
     cp /Users/marc/Library/Application\ Support/Code/User/settings.json ~/.code
     cp /Users/marc/Library/Application\ Support/Code/User/snippets ~/.code
+    git add .code
     git add .config/nvim
     git add .config/alacritty/alacritty.yml
     git add .config/ranger

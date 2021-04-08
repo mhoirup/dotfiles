@@ -1,0 +1,212 @@
+{
+    "breadcrumbs.enabled": false,
+    "customizeUI.font.regular": "Myriad Pro",
+    "editor.cursorBlinking": "phase",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorStyle": "line",
+    "editor.detectIndentation": false,
+    "editor.fontFamily": "'Operator Mono Lig Book', 'monospaced'",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 12.5,
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.insertSpaces": true,
+    "editor.lineHeight": 21,
+    "editor.occurrencesHighlight": false,
+    "editor.quickSuggestions": { "other": true, "comments": false, "strings": false },
+    "editor.quickSuggestionsDelay": 1,
+    "editor.renderLineHighlight": "none",
+    "editor.renderWhitespace": "none",
+    // "editor.colorDecorators": false,
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.smoothScrolling": true,
+    "editor.tabSize": 4,
+    "r.lsp.diagnostics": false,
+    "git.decorations.enabled": false,
+    "editor.wordBasedSuggestions": false,
+    "files.autoSave": "off",
+    "python.languageServer": "Microsoft",
+    "terminal.integrated.cursorStyle": "block",
+    "terminal.integrated.fontFamily": "'Operator Mono Book', 'monospaced'",
+    "terminal.integrated.fontSize": 12,
+    "typescript.suggest.paths": false,
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/Cellar/neovim/HEAD-5b5848f/bin/nvim",
+    "window.title": "",
+    "window.titleBarStyle": "custom",
+    "workbench.colorTheme": "GitHub Light",
+    "workbench.editor.showTabs": false,
+    "workbench.iconTheme": "material-icon-theme",
+    // "editor.acceptSuggestionOnEnter": "off",
+    // "typescript.disableAutomaticTypeAcquisition": true,
+    "workbench.colorCustomizations": {
+        "[GitHub Light]": {
+            "activityBar.border": "#ffffff",
+            "dropdown.background": "#ffffff",
+            "dropdown.border": "#24292e",
+            "editor.snippetFinalTabstopHighlightBorder": "#ffffff",
+            "editor.snippetTabstopHighlightBackground": "#ffffff",
+            "editorCursor.background": "#ffffff",
+            "editorCursor.foreground": "#032F62",
+            "editorOverviewRuler.bracketMatchForeground": "#ffffff",
+            "panel.background": "#ffffff",
+            "panelSectionHeader.border": "#ffffff",
+            "sideBar.background": "#ffffff",
+            "sideBarSectionHeader.background": "#ffffff",
+            "tab.activeForeground": "#24292e",
+            "tab.border": "#ffffff",
+            "tab.inactiveBackground": "#ffffff",
+            "terminal.ansiBlue": "#005CC5",
+            "terminal.ansiBrightBlack": "#6A737D",
+            "terminal.ansiBrightBlue": "#005CC5",
+            "terminal.background": "#ffffff",
+            "terminal.foreground": "#24292E",
+            "titleBar.border": "#ffffff",
+            "titleBar.inactiveBackground": "#ffffff",
+            "window.activeBorder": "#ffffff",
+            "scrollbar.shadow": "#ffffff",
+        },
+        "[Nord]": {
+            "dropdown.background": "#2e3440",
+            "dropdown.border": "#2e3440",
+            "statusBar.background": "#2e3440",
+            "scrollbar.shadow": "#2e3440",
+            "editorOverviewRuler.border": "#2e3440",
+            "titleBar.inactiveBackground": "#2e3440",
+        }
+    },
+    "editor.tokenColorCustomizations": {
+        "[GitHub Light]": {
+            "textMateRules": [
+                {
+                    "scope": [ // purple
+                        "meta.function-call.generic.python",
+                        "variable.function.r"
+                    ],
+                    "settings": {
+                        "foreground": "#6F42C1"
+                    }
+                }, {
+                    "scope": [ // Grayed out (like comments)
+                        "punctuation.definition.string.begin.latex",
+                        "punctuation.definition.string.end.latex",
+                    ],
+                    "settings": {
+                        "foreground":  "#6a737d",
+                    }
+                }, {
+                    "scope": [ // Black
+                        "entity.namespace.r",
+                    ],
+                    "settings": {
+                        "foreground": "#24292E",
+                    }
+                }, {
+                    "scope": [ // italic font-type
+                        // "entity.name.type.class", //class names
+                        // "keyword", //import, export, return…
+                        // "storage.modifier", //static keyword
+                        // "storage.type.function.python",
+                        // "storage.type.class.python",
+                        // "keyword.operator.logical.python",
+                        // "meta.attribute.python",
+                    ],
+                    "settings": {
+                        "fontStyle": "italic"
+                    }
+                }, {
+                    "scope": [ // disable italic font-type
+                        "invalid",
+                        "keyword.operator",
+                        "constant.numeric.css",
+                        "keyword.other.unit.px.css",
+                        "constant.numeric.decimal.js",
+                        "constant.numeric.json",
+                        "entity.name.type.class.python",
+                        "keyword.control.flow.python",
+                        "invalid.illegal.expected-dictionary-separator.json.comments",
+                        "invalid.illegal.expected-dictionary-separator.json",
+                    ],
+                    "settings": {
+                      "fontStyle": ""
+                }
+              }
+            ]
+        },
+        "[One Dark Pro]": {
+            "textMateRules": [
+                    // {
+                    //     "scope": [
+                    //         "variable.other.r"
+                    //     ],
+                    //     "settings": {
+                    //         "foreground": "#abb2bf",
+                    //     }
+                    // }, {
+                    //     "scope": [
+                    //         "keyword.operator.assignment.r",
+                    //     ],
+                    //     "settings": {
+                    //         "foreground": "#e06c75",
+                    //     }
+                    // }
+            ]
+        }
+    },
+    "files.associations": {
+      "*.rmd": "markdown"
+    },
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "[json]": {
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace"
+    },
+    "[python]": {
+        "editor.semanticHighlighting.enabled": false
+    },
+    "vscode-neovim.highlightGroups.highlights": {
+        "Directory": "vim",
+        "IncSearch": {
+            "backgroundColor": "theme.editor.findMatchBackground",
+            "borderColor": "theme.editor.findMatchBorder"
+        },
+        "Search": {
+            "backgroundColor": "theme.editor.findMatchHighlightBackground",
+            "borderColor": "theme.editor.findMatchHighlightBorder"
+        },
+        "Visual": {
+            "backgroundColor": "theme.editor.selectionBackground"
+        },
+        "Conceal": "vim",
+        "Substitute": "vim"
+    },
+    "launch": {
+
+        "configurations": [],
+        "compounds": []
+    },
+    "[jsonc]": {
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace"
+    },
+    "files.exclude": {
+        ".vscode/": true,
+        "Library/": true,
+        ".local/": true,
+        "Movies/": true,
+        "Music/": true,
+        "Pictures/": true,
+        "Applications/": true,
+        ".Trash/": true,
+    },
+    "editor.minimap.enabled": false,
+    "workbench.activityBar.visible": false,
+}
