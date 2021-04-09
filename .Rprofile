@@ -18,6 +18,7 @@ look <- function(object) {
         if (length(object) <= 200) object
         else str(object)
     }
+    else if (class(object) == 'formula') object
     else summary(object)
 }
 

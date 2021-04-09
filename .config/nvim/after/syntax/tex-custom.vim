@@ -57,7 +57,7 @@ syntax match texTextFormat '\v\\\zsemph|text[a-z]{2}\ze[\{]'
 
 syntax region texNote matchgroup=texDelimiter start='{' end='}'
 
-
+syntax match texLineBreak '\\\\'
 
 " syntax match texNote '\v\\\zs.*note\ze[\{\[]'
 

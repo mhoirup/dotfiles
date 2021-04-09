@@ -51,6 +51,7 @@ hi! link texFunction         Statement
 hi! link texTextFormat       Statement
 hi! link vimFuncOper         Statement
 hi! link rDollar             Statement
+hi! link texLineBreak        Statement
 
 execute 'hi Preproc guifg='.s:purple.' guibg='.s:white
 hi! link pythonClass         Preproc

@@ -20,6 +20,10 @@
     "editor.scrollbar.horizontal": "hidden",
     "editor.scrollbar.vertical": "hidden",
     "editor.smoothScrolling": true,
+    "r.rterm.option": [
+        "--no-save",
+        "--no-restore",
+    ],
     "editor.tabSize": 4,
     "r.lsp.diagnostics": false,
     "git.decorations.enabled": false,
@@ -207,6 +211,6 @@
         "Applications/": true,
         ".Trash/": true,
     },
-    "editor.minimap.enabled": false,
     "workbench.activityBar.visible": false,
+    "editor.minimap.enabled": false,
 }

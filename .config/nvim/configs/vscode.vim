@@ -41,12 +41,11 @@ endfun
 
 
 let mapleader = 'æ'
-
 nmap <silent> <leader>c :call ClearTerminal()<CR>
 nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
 nmap + <S-o><ESC>j
 nmap <silent> * *``
-nmap <S-g> Gzz
+nnoremap <S-g> Gzz
 nmap <S-tab> <<
 nmap <TAB> >>
 nmap <silent> <ESC> :noh<cr>
@@ -60,4 +59,3 @@ vmap <S-k> 5k
 vmap <Tab> >gv
 xmap gc  <Plug>VSCodeCommentary
 vmap x d
-

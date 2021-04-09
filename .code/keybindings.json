@@ -119,5 +119,12 @@
         "command": "cursorMove",
         "args": {"to": "left", "by": "character", "value": 1},
         "when": "editorTextFocus && neovim.mode == normal"
+    }, {
+        "key": "'",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && neovim.mode == visual",
+        "args": {
+            "snippet": "'${TM_SELECTED_TEXT}'"
+        }
     },
 ]
