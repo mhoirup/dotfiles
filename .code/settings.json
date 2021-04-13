@@ -1,13 +1,14 @@
 {
     "breadcrumbs.enabled": false,
-    "customizeUI.font.regular": "Myriad Pro",
+    "window.zoomLevel": -0.3,
+    "customizeUI.font.regular": "Operator Mono Book",
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": true,
     "editor.cursorStyle": "line",
     "editor.detectIndentation": false,
-    "editor.fontFamily": "'Operator Mono Lig Book', 'monospaced'",
+    "editor.fontFamily": "'Operator Mono Lig Medium', 'monospaced'",
     "editor.fontLigatures": true,
-    "editor.fontSize": 12.5,
+    "editor.fontSize": 13.0,
     "editor.hideCursorInOverviewRuler": true,
     "editor.insertSpaces": true,
     "editor.lineHeight": 21,
@@ -16,7 +17,9 @@
     "editor.quickSuggestionsDelay": 1,
     "editor.renderLineHighlight": "none",
     "editor.renderWhitespace": "none",
-    // "editor.colorDecorators": false,
+    "editor.trimAutoWhitespace": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.colorDecorators": true,
     "editor.scrollbar.horizontal": "hidden",
     "editor.scrollbar.vertical": "hidden",
     "editor.smoothScrolling": true,
@@ -25,19 +28,20 @@
         "--no-restore",
     ],
     "editor.tabSize": 4,
-    "r.lsp.diagnostics": false,
+    "r.lsp.diagnostics": true,
     "git.decorations.enabled": false,
     "editor.wordBasedSuggestions": false,
     "files.autoSave": "off",
     "python.languageServer": "Microsoft",
     "terminal.integrated.cursorStyle": "block",
-    "terminal.integrated.fontFamily": "'Operator Mono Book', 'monospaced'",
-    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.fontFamily": "'Operator Mono Medium', 'monospaced'",
+    "terminal.integrated.fontSize": 12.5,
     "typescript.suggest.paths": false,
     "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/Cellar/neovim/HEAD-5b5848f/bin/nvim",
     "window.title": "",
     "window.titleBarStyle": "custom",
-    "workbench.colorTheme": "GitHub Light",
+    "workbench.colorTheme": "Nord",
+    "editor.foldingStrategy": "indentation",
     "workbench.editor.showTabs": false,
     "workbench.iconTheme": "material-icon-theme",
     // "editor.acceptSuggestionOnEnter": "off",
@@ -68,6 +72,7 @@
             "titleBar.inactiveBackground": "#ffffff",
             "window.activeBorder": "#ffffff",
             "scrollbar.shadow": "#ffffff",
+            "terminal.selectionBackground": "#0366d625"
         },
         "[Nord]": {
             "dropdown.background": "#2e3440",
@@ -76,6 +81,13 @@
             "scrollbar.shadow": "#2e3440",
             "editorOverviewRuler.border": "#2e3440",
             "titleBar.inactiveBackground": "#2e3440",
+            "statusBar.foreground": "#616E88",
+            "editorBracketMatch.background": "#88c0d0",
+            "editorBracketMatch.border": "#2e3440",
+            "terminal.foreground": "#81a1c1",
+            "terminal.selectionBackground": "#88c0d099",
+            "editor.snippetFinalTabstopHighlightBorder": "#2e3440",
+            "editor.snippetTabstopHighlightBackground": "#2e3440",
         }
     },
     "editor.tokenColorCustomizations": {
@@ -136,23 +148,49 @@
               }
             ]
         },
-        "[One Dark Pro]": {
+        "[Nord]": {
             "textMateRules": [
-                    // {
-                    //     "scope": [
-                    //         "variable.other.r"
-                    //     ],
-                    //     "settings": {
-                    //         "foreground": "#abb2bf",
-                    //     }
-                    // }, {
-                    //     "scope": [
-                    //         "keyword.operator.assignment.r",
-                    //     ],
-                    //     "settings": {
-                    //         "foreground": "#e06c75",
-                    //     }
-                    // }
+                {
+                    "scope": [ // Blue-Green-ish
+                        "punctuation.support.type.property-name.begin.json.comments",
+                        "punctuation.support.type.property-name.end.json.comments",
+                    ],
+                    "settings": {
+                        "foreground": "#8FBCBB"
+                    }
+                }, {
+                    "scope": [ // Green
+                        "punctuation.definition.string.begin.json.comments",
+                        "punctuation.definition.string.end.json.comments",
+                        "punctuation.definition.string.begin.r",
+                        "punctuation.definition.string.end.r",
+                    ],
+                    "settings": {
+                        "foreground": "#A3BE8C"
+                    }
+                }, {
+                    "scope": [ // Blue
+                        "support.function.r"
+                    ],
+                    "settings": {
+                        "foreground": "#81a1c1",
+                    }
+                }, {
+                    "scope": [ // Cyan
+                        "variable.function.r"
+                    ],
+                    "settings": {
+                        "foreground": "#88c0d0",
+                    }
+                }, {
+                    "scope": [ // Yellow
+                        "constant.language.r",
+                    ],
+                    "settings": {
+                        "foreground": "#ebcb8b",
+                    }
+                }
+
             ]
         }
     },

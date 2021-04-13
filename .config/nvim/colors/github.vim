@@ -63,6 +63,8 @@ hi! link texHyperLink        Preproc
 hi! link texHyperLinkText    Preproc
 hi! link vimFuncName         Preproc
 hi! link vimUserFunc         Preproc
+hi! link yamlDocumentStart   Preproc
+hi! link yamlBlockMappingKey Preproc
 
 execute 'hi Constant guifg='.s:dark_blue.' guibg='.s:white
 hi! link texNote             Constant
@@ -92,8 +94,8 @@ hi! link texMath             vimCommand
 hi! link texRefFun           vimCommand
 hi! link vimIsCommand        vimCommand
 hi! link vimNotFunc          vimCommand
-hi! link yamlBlockMappingKey vimCommand
 hi! link rNumber             vimCommand
+hi! link pandocDelimitedCodeBlock vimCommand
 
 execute 'hi Comment guifg='.s:dark_gray.' guibg='.s:white
 hi! link texMathDelim        Comment

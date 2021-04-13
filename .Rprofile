@@ -22,3 +22,42 @@ look <- function(object) {
     else summary(object)
 }
 
+dsummary <- function(data, digits = 2) {
+    f <- c('min', 'mean', 'max', 'sd'); summaries <- list(
+        'categorical' = data.frame(),
+        'numeric' = data.frame()
+        )
+    for (i in seq_len(ncol(data))) {
+        x <- data[, i]; vunique <- sort(unique(x))
+        if (length(vunique) == 2 && sum(vunique == c(0, 1)) == 2) {
+            x <- as.logical(x)
+        }
+        if (class(x) %in% c('character', 'factor', 'logical')) {
+            freq <- table(x)[which.max(table(x))]
+            summaries$categorical <- rbind(summaries$categorical, data.frame(
+                var = names(data)[i],
+                type = class(x),
+                n.unique = length(vunique),
+                mode = names(freq),
+                prop.mode = round(freq / nrow(data), 4) * 100,
+                NAs = sum(is.na(x))
+                ))
+        } else {
+            descriptors <- as.numeric(sapply(f, do.call, list(x, na.rm = T)))
+            summaries$numeric <- rbind(summaries$numeric, data.frame(
+                var = names(data)[i],
+                type = class(x),
+                min = descriptors[1],
+                mean = descriptors[2],
+                max = descriptors[3],
+                sd = descriptors[4],
+                NAs = sum(is.na(x))
+                ))
+        }
+    }
+    summaries$numeric[, 3:6] <- sapply(summaries$numeric[, 3:6],
+        formatC, digits, format = 'f')
+    rownames(summaries$categorical) <- NULL
+    rownames(summaries$numeric) <- NULL
+    summaries
+}

@@ -17,53 +17,10 @@ cursor:
     blink_interval: 500
 colors:
     # Nord theme
-    # primary:
-    #     background:     '#2e3440'
-    #     foreground:     '#d8dee9'
-    #     dim_foreground: '#a5abb6'
-    # selection:
-    #     text:       CellForeground
-    #     background: '#4c566a'
-    # search:
-    #     matches:
-    #         foreground: CellBackground
-    #         background: '#88c0d0'
-    #     bar:
-    #         background: '#434c5e'
-    #         foreground: '#d8dee9'
-    # normal:
-    #     black:   '#3b4252'
-    #     red:     '#bf616a'
-    #     green:   '#a3be8c'
-    #     yellow:  '#ebcb8b'
-    #     blue:    '#81a1c1'
-    #     magenta: '#b48ead'
-    #     cyan:    '#88c0d0'
-    #     white:   '#e5e9f0'
-    # bright:
-    #     black:   '#4c566a'
-    #     red:     '#bf616a'
-    #     green:   '#a3be8c'
-    #     yellow:  '#ebcb8b'
-    #     blue:    '#81a1c1'
-    #     magenta: '#b48ead'
-    #     cyan:    '#8fbcbb'
-    #     white:   '#eceff4'
-    # dim:
-    #     black:   '#373e4d'
-    #     red:     '#94545d'
-    #     green:   '#809575'
-    #     yellow:  '#b29e75'
-    #     blue:    '#68809a'
-    #     magenta: '#8c738c'
-    #     cyan:    '#6d96a5'
-    #     white:   '#aeb3bb'
-    
-    # Github theme
     primary:
-        background:     '#ffffff'
-        foreground:     '#24292E'
-        dim_foreground: '#d1d5da'
+        background:     '#2e3440'
+        foreground:     '#d8dee9'
+        dim_foreground: '#a5abb6'
     selection:
         text:       CellForeground
         background: '#4c566a'
@@ -75,36 +32,79 @@ colors:
             background: '#434c5e'
             foreground: '#d8dee9'
     normal:
-        black:   '#24292e'
-        red:     '#d73a49'
-        green:   '#bef5cb'
-        yellow:  '#e36209'
-        blue:    '#005cc5'
-        magenta: '#6f42c1'
-        cyan:    '#005cc5'
-        white:   '#ffffff'
+        black:   '#3b4252'
+        red:     '#bf616a'
+        green:   '#a3be8c'
+        yellow:  '#ebcb8b'
+        blue:    '#81a1c1'
+        magenta: '#b48ead'
+        cyan:    '#88c0d0'
+        white:   '#e5e9f0'
     bright:
-        black:   '#d1d5da'
-        red:     '#d73a49'
-        green:   '#bef5cb'
-        yellow:  '#e36209'
-        blue:    '#005cc5'
-        magenta: '#6f42c1'
-        cyan:    '#005cc5'
-        white:   '#ffffff'
+        black:   '#4c566a'
+        red:     '#bf616a'
+        green:   '#a3be8c'
+        yellow:  '#ebcb8b'
+        blue:    '#81a1c1'
+        magenta: '#b48ead'
+        cyan:    '#8fbcbb'
+        white:   '#eceff4'
     dim:
-        black:   '#d1d5da'
-        red:     '#d73a49'
-        green:   '#bef5cb'
-        yellow:  '#e36209'
-        blue:    '#005cc5'
-        magenta: '#6f42c1'
-        cyan:    '#005cc5'
-        white:   '#ffffff'
+        black:   '#373e4d'
+        red:     '#94545d'
+        green:   '#809575'
+        yellow:  '#b29e75'
+        blue:    '#68809a'
+        magenta: '#8c738c'
+        cyan:    '#6d96a5'
+        white:   '#aeb3bb'
+    
+    # Github theme
+    # primary:
+    #     background:     '#ffffff'
+    #     foreground:     '#24292E'
+    #     dim_foreground: '#d1d5da'
+    # selection:
+    #     text:       CellForeground
+    #     background: '#4c566a'
+    # search:
+    #     matches:
+    #         foreground: CellBackground
+    #         background: '#88c0d0'
+    #     bar:
+    #         background: '#434c5e'
+    #         foreground: '#d8dee9'
+    # normal:
+    #     black:   '#24292e'
+    #     red:     '#d73a49'
+    #     green:   '#bef5cb'
+    #     yellow:  '#e36209'
+    #     blue:    '#005cc5'
+    #     magenta: '#6f42c1'
+    #     cyan:    '#005cc5'
+    #     white:   '#ffffff'
+    # bright:
+    #     black:   '#d1d5da'
+    #     red:     '#d73a49'
+    #     green:   '#bef5cb'
+    #     yellow:  '#e36209'
+    #     blue:    '#005cc5'
+    #     magenta: '#6f42c1'
+    #     cyan:    '#005cc5'
+    #     white:   '#ffffff'
+    # dim:
+    #     black:   '#d1d5da'
+    #     red:     '#d73a49'
+    #     green:   '#bef5cb'
+    #     yellow:  '#e36209'
+    #     blue:    '#005cc5'
+    #     magenta: '#6f42c1'
+    #     cyan:    '#005cc5'
+    #     white:   '#ffffff'
 font:
     normal:
         family: Operator Mono
-        style:  Book
+        style:  Medium
     bold:
         family: Operator Mono
         style:  Medium

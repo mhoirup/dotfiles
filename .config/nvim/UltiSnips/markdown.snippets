@@ -1,3 +1,374 @@
+global !p
+texMathZones = ['texMathZone' + x for x in ['A', 'AS', 'B', 'BS', 'C', 'CS',
+	'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS', 'J', 'JS',
+	'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z', 'AmsA', 'AmsB', 'AmsC',
+	'AmsD', 'AmsE', 'AmsF', 'AmsG', 'AmsAS', 'AmsBS', 'AmsCS', 'AmsDS', 'AmsES',
+	'AmsFS', 'AmsGS', 'XX', '']]
+
+texIgnoreMathZones = ['texMathText']
+
+texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+
+ignore = texIgnoreMathZoneIds[0]
+
+def math():
+	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+	try:
+		first = next(
+            i for i in reversed(synstackids)
+            if i in texIgnoreMathZoneIds or i in texMathZoneIds
+        )
+		return first != ignore
+	except StopIteration:
+		return False
+
+endglobal
+
+# MATH SNIPPETS
+## Greek letters
+context "math()"
+snippet al "alpha" i
+\alpha
+endsnippet
+
+context "math()"
+snippet bb "bold beta" iA
+\boldsymbol{\beta}
+endsnippet
+
+context "math()"
+snippet de "delta" i
+\delta
+endsnippet
+
+context "math()"
+snippet svar "variance" i
+\hat{\sigma}^2
+endsnippet
+
+context "math()"
+snippet var "variance" i
+\sigma^2
+endsnippet
+
+## Math functions
+context "math()"
+snippet pr "probability" i
+\Pr($1)$0
+endsnippet
+
+context "math()"
+snippet abs "absolute value" i
+\lvert $1\rvert$0
+endsnippet
+
+context "math()"
+snippet .. "dots" iA
+\ldots$0
+endsnippet
+
+context "math()"
+snippet >= "more than or equal" iA
+\geqslant
+endsnippet
+
+context "math()"
+snippet <= "less than or equal" iA
+\leqslant
+endsnippet
+
+context "math()"
+snippet int "integration" i
+\int_{$1}^{$2}$0
+endsnippet
+
+context "math()"
+snippet exp "exponent" i
+\exp($1)$0
+endsnippet
+
+context "math()"
+snippet --> "long right arrow" iA
+\longrightarrow
+endsnippet
+
+context "math()"
+snippet inf "infinity" i
+\infty
+endsnippet
+
+context "math()"
+snippet E "expectation" i
+E($1)$0
+endsnippet
+
+context "math()"
+snippet ln "logarithm" i
+\ln$0
+endsnippet
+
+context "math()"
+snippet lab "label" w
+\label{eq:$1}$0
+endsnippet
+
+context "math()"
+snippet bm "bold math" i
+\boldsymbol{$1}$0
+endsnippet
+
+context "math()"
+snippet | "conditional" iA
+\mid $0
+endsnippet
+
+context "math()"
+snippet . "centered dot" i
+\cdot
+endsnippet
+
+context "math()"
+snippet maps "maps to" iA
+\mapsto $0
+endsnippet
+
+context "math()"
+snippet -> "right arrow" iA
+\to
+endsnippet
+
+context "math()"
+snippet Ø "right arrow" iA
+\emptyset
+endsnippet
+
+context "math()"
+snippet norm "norm" i
+\lVert $1\rVert $0
+endsnippet
+
+context "math()"
+snippet ip "inner product" i
+\left\langle$1\right\rangle$0
+endsnippet
+
+context "math()"
+snippet scr "right arrow" i
+\mathscr{$1}$0
+endsnippet
+
+context "math()"
+snippet hat "hat" i
+\hat{$1}$0
+endsnippet
+
+context "math()"
+snippet // "fraction" iA
+\frac{$1}{$2}$0
+endsnippet
+
+context "math()"
+snippet rr "reals" i
+\mathbb{R}
+endsnippet
+
+context "math()"
+snippet overset "overset" iA
+\overset{${1:above}}{${2:below}}
+endsnippet
+
+context "math()"
+snippet asim "asymptotic distribution" i
+\overset{a}{\sim}$1
+endsnippet
+
+context "math()"
+snippet ssi "sample sum index i" wA
+\sum_{i=1}^N $0
+endsnippet
+
+context "math()"
+snippet sst "sample sum index t" wA
+\sum_{t=1}^T $0
+endsnippet
+
+context "math()"
+snippet sum "sum" i
+\sum_{$1}^{$2} $0
+endsnippet
+
+context "math()"
+snippet == "equivalence" iA
+\equiv $0
+endsnippet
+
+context "math()"
+snippet * "times" i
+\times $0
+endsnippet
+
+context "math()"
+snippet sqrt "square root" i
+\sqrt{$1}$0
+endsnippet
+
+context "math()"
+snippet sp "superscript" i
+^{$1}$0
+endsnippet
+
+context "math()"
+snippet _ "subscript" i
+_{$1}$0
+endsnippet
+
+context "math()"
+snippet bigset "big set" i
+\left\\{$1\right\\}$0
+endsnippet
+
+context "math()"
+snippet set "set" i
+\\{$1\\}$0
+endsnippet
+
+context "math()"
+snippet tp "transpose" iA
+^{\mathsmaller{\prime}}$0
+endsnippet
+
+context "math()"
+snippet != "not equal" iA
+\neq
+endsnippet
+
+context "math()"
+snippet inv "Inverse" iA
+^{-1}
+endsnippet
+
+context "math()"
+snippet sim "distribution" i
+\sim $0
+endsnippet
+
+context "math()"
+snippet bx "bold x" iA
+\boldsymbol{x}
+endsnippet
+
+context "math()"
+snippet by "bold x" iA
+\boldsymbol{y}
+endsnippet
+
+context "math()"
+snippet bh "bold with hat" i
+\hat{\boldsymbol{$1}}$0
+endsnippet
+
+context "math()"
+snippet est "adjusted hat for letters" i
+\skew{2}\hat{$1}$0
+endsnippet
+
+context "math()"
+snippet hyp "hypothesis" i
+\text{H}_{$1}: $0
+endsnippet
+
+## Math text
+context "math()"
+snippet text "text" wA
+\text{$1}$0
+endsnippet
+
+context "math()"
+snippet Cov "Covariance" i
+\text{Cov}($1,$2)$0
+endsnippet
+
+context "math()"
+snippet Var "Variance" i
+\text{Var}($1)$0
+endsnippet
+
+## Brackets
+context "math()"
+snippet bigp "large parentheses" iA
+\left($1\right)$0
+endsnippet
+
+context "math()"
+snippet bigb "large bracket" iA
+\left[$1\right]$0
+endsnippet
+
+
+
+
+
+
+
+ 
+
+context "math()"
+snippet ga "gamma" i
+\gamma
+endsnippet
+
+context "math()"
+snippet eps "upsilon" i
+\epsilon
+endsnippet
+
+context "math()"
+snippet la "lamda" i
+\lambda
+endsnippet
+
+context "math()"
+snippet b "beta" i
+\beta
+endsnippet
+
+context "math()"
+snippet th "theta" i
+\theta
+endsnippet
+
+context "math()"
+snippet Th "Theta" i
+\Theta
+endsnippet
+
+context "math()"
+snippet ph "phi" i
+\phi
+endsnippet
+
+context "math()"
+snippet par "partial" i
+\partial
+endsnippet
+
+context "math()"
+snippet chisq "chi-squared" i
+\chi^2
+endsnippet
+
+context "math()"
+snippet nn "no numbering"
+\nonumber
+endsnippet
+
+context "math()"
+snippet := "defined as" iA
+\coloneqq
+endsnippet
+
+
 snippet code "code block" b
 \`\`\`$1
 $0
@@ -23,4 +394,8 @@ $$
 	$1
 $$
 $0
+endsnippet
+
+snippet sidenote "tufte style sidenote"
+{% sidenote '${1:tag}' '$2'%} $0
 endsnippet

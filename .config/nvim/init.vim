@@ -16,7 +16,6 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-python/python-syntax'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'voldikss/vim-floaterm'
-Plug 'karb94/neoscroll.nvim'
 
 call plug#end()
 
@@ -26,22 +25,15 @@ source ~/.config/nvim/configs/plugins.vim
 
 let mapleader = 'æ'
 
-" nnoremap <silent> <C-h> :tabp<CR>
-" nnoremap <silent> <C-l> :tabn<CR>
 inoremap <S-left> <C-o>_
 inoremap <S-right> <C-o>$
 inoremap <expr> <C-j> pumvisible() ? '<C-n>' : '<C-j>'
 inoremap <expr> <C-k> pumvisible() ? '<C-p>' : '<C-k>'
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>x\<BS>"
+inoremap <space> <C-G>u<space>
 inoremap åb+ <C-o>ciw<BS>
-nmap <S-h> <C-u>
-nmap <S-l> <C-d>
 nnoremap & ma
 nnoremap + <S-o><ESC>j
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 nnoremap <S-g> Gzz
 nnoremap <S-j> 10j
 nnoremap <S-k> 10k

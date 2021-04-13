@@ -6,16 +6,16 @@ export ZSH="/Users/marc/.oh-my-zsh"
 export FZF_DEFAULT_COMMAND='rg --files --hidden' 
 
 # Nord theme
-# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-#  --color=gutter:#2e3440,bg+:#2e3440,fg+:#d8dee9
-#  --color=hl:#ebcb8b,hl+:#ebcb8b,pointer:#81a1c1
-#  --color=prompt:#81a1c1,info:#4c566a,bg:#2e3440'
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+ --color=gutter:#2e3440,bg+:#2e3440,fg+:#d8dee9
+ --color=hl:#ebcb8b,hl+:#ebcb8b,pointer:#81a1c1
+ --color=prompt:#81a1c1,info:#4c566a,bg:#2e3440'
 
 # Github theme
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
- --color=gutter:#ffffff,bg+:#ffffff,fg+:#24292e
- --color=hl:#d73a49,hl+:#d73a49,pointer:#24292e
- --color=prompt:#24292e,info:#d1d5da,bg:#ffffff'
+# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+#  --color=gutter:#ffffff,bg+:#ffffff,fg+:#24292e
+#  --color=hl:#d73a49,hl+:#d73a49,pointer:#24292e
+#  --color=prompt:#24292e,info:#d1d5da,bg:#ffffff'
  
 ZSH_THEME="robbyrussell"
 

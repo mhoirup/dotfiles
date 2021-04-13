@@ -20,7 +20,7 @@ if exists('+termguicolors')
   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-colorscheme github
+colorscheme nord
 
 set expandtab
 set tabstop=4
@@ -47,26 +47,29 @@ set shortmess+=F
 set lazyredraw
 
 if g:colors_name == 'nord'
+    hi!      Comment        guifg=#616e88 gui=italic
+    hi!      CursorLine                   guibg=#2e3440
     hi!      EndOfBuffer    guifg=#2e3440
-    hi!      MatchParen     guifg=None    guibg=None    gui=underline
+    hi!      MatchParen                   guibg=None
     hi!      PmenuSel       guifg=#2e3440 guibg=#88c0d0
     hi!      Search         guifg=#2e3440 guibg=#ebcb8b
+    hi!      StatusLine     guifg=#ebcb8b guibg=#2e3440
     hi!      VertSplit      guifg=#4c566a
     hi! link FloatermBorder Normal
     hi! link MsgArea        Comment
     hi! link Statement      Type
     hi! link StatusLineNC   Comment
+    hi! link TabLine        GrayedOut
+    hi! link TabLineFill    Normal
+    hi! link TabLineSel     StatusLine
     hi! link TermCursorNC   EndOfBuffer
     hi! link healthSuccess  String
     hi! link healthWarning  Statusline
     hi! link qfError        Normal 
     hi! link qfFileName     Comment
     hi! link qfLineNr       Normal
-    hi! link TabLineFill    Normal
-    hi! link TabLineSel     StatusLine
-    hi! link TabLine        GrayedOut
-    hi!      StatusLine     guifg=#ebcb8b guibg=#2e3440
-    hi!      Comment        guifg=#616e88 gui=italic
+    hi! link vimHiBang      vimHighlight
+    hi! link vimIsCommand   vimCommand
 elseif g:colors_name == 'blossom'
     hi! link StatusLine     Identifier
     hi!      EndOfBuffer    guifg=#ede6e3
