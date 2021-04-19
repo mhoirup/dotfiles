@@ -30,6 +30,16 @@ fun! ClearTerminal()
     call VSCodeNotify('workbench.action.focusPreviousGroup')
 endfun
 
+fun! CycleTerminal(a:direction)
+    if a:direction == 'next'
+        call VSCodeNotify('workbench.action.terminal.focusNext')
+    else
+        call VSCodeNotify('workbench.action.terminal.focusPrevious')
+    endif
+    call VSCodeNotify('workbench.action.focusPreviousGroup')
+endfun
+
+
 fun! NewTerminal()
     call VSCodeNotify('workbench.action.terminal.new')
     call VSCodeNotify('workbench.action.focusPreviousGroup')
@@ -59,3 +69,6 @@ vmap <S-k> 5k
 vmap <Tab> >gv
 xmap gc  <Plug>VSCodeCommentary
 vmap x d
+
+unmap <Esc>
+

@@ -27,7 +27,7 @@
     }, {
         "key": "shift+f",
         "command": "workbench.action.quickOpen",
-        "when": "neovim.mode == 'normal'"
+        "when": "editorTextFocus && neovim.mode == 'normal'"
     }, {
         "key": "cmd+e",
         "command": "workbench.view.explorer"
@@ -62,8 +62,6 @@
     }, {
         "key": "shift+enter",
         "command": "r.runSelection",
-        // "command": "vscode-neovim.send",
-        // "args": ":call SendText('r.runSelection')<CR>",
         "when": "editorTextFocus && neovim.mode == insert && editorLangId == r",
     }, {
         "key": "cmd+w",
@@ -120,11 +118,8 @@
         "args": {"to": "left", "by": "character", "value": 1},
         "when": "editorTextFocus && neovim.mode == normal"
     }, {
-        "key": "'",
-        "command": "editor.action.insertSnippet",
-        "when": "editorTextFocus && neovim.mode == visual",
-        "args": {
-            "snippet": "'${TM_SELECTED_TEXT}'"
-        }
+        "key": "escape",
+        "command": "vscode-neovim.escape",
+        "when": "editorTextFocus && neovim.mode == normal"
     },
 ]

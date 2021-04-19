@@ -43,6 +43,11 @@ snippet de "delta" i
 endsnippet
 
 context "math()"
+snippet d "delta" i
+\mathrm{d}
+endsnippet
+
+context "math()"
 snippet svar "variance" i
 \hat{\sigma}^2
 endsnippet
@@ -230,7 +235,7 @@ endsnippet
 
 context "math()"
 snippet set "set" i
-\\{$1\\}$0
+\\\\{$1\\\\}$0
 endsnippet
 
 context "math()"
@@ -305,13 +310,12 @@ snippet bigb "large bracket" iA
 \left[$1\right]$0
 endsnippet
 
-
-
-
-
-
-
- 
+context "math()"
+snippet align "aligned environment" b
+\begin{align}
+	$0
+\end{align}
+endsnippet
 
 context "math()"
 snippet ga "gamma" i
@@ -398,4 +402,12 @@ endsnippet
 
 snippet sidenote "tufte style sidenote"
 {% sidenote '${1:tag}' '$2'%} $0
+endsnippet
+
+snippet bf "bold text" wi
+**$1** $0
+endsnippet
+
+snippet em "emphasis" wi
+*$1* $0
 endsnippet

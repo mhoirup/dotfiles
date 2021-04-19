@@ -13,7 +13,7 @@
     "editor.insertSpaces": true,
     "editor.lineHeight": 21,
     "editor.occurrencesHighlight": false,
-    "editor.quickSuggestions": { "other": true, "comments": false, "strings": false },
+    // "editor.quickSuggestions": { "other": true, "comments": false, "strings": false },
     "editor.quickSuggestionsDelay": 1,
     "editor.renderLineHighlight": "none",
     "editor.renderWhitespace": "none",
@@ -154,6 +154,9 @@
                     "scope": [ // Blue-Green-ish
                         "punctuation.support.type.property-name.begin.json.comments",
                         "punctuation.support.type.property-name.end.json.comments",
+                        "punctuation.support.type.property-name.begin.json",
+                        "punctuation.support.type.property-name.end.json",
+                        "variable.language.special.self.python",
                     ],
                     "settings": {
                         "foreground": "#8FBCBB"
@@ -164,6 +167,10 @@
                         "punctuation.definition.string.end.json.comments",
                         "punctuation.definition.string.begin.r",
                         "punctuation.definition.string.end.r",
+                        "punctuation.definition.string.begin.json",
+                        "punctuation.definition.string.end.json",
+                        "punctuation.definition.string.begin.python",
+                        "punctuation.definition.string.end.python",
                     ],
                     "settings": {
                         "foreground": "#A3BE8C"
@@ -177,7 +184,8 @@
                     }
                 }, {
                     "scope": [ // Cyan
-                        "variable.function.r"
+                        "variable.function.r",
+                        // "support.function.r"
                     ],
                     "settings": {
                         "foreground": "#88c0d0",
@@ -189,8 +197,7 @@
                     "settings": {
                         "foreground": "#ebcb8b",
                     }
-                }
-
+                },
             ]
         }
     },
@@ -248,7 +255,9 @@
         "Pictures/": true,
         "Applications/": true,
         ".Trash/": true,
+        ".bundle/": true,
     },
     "workbench.activityBar.visible": false,
-    "editor.minimap.enabled": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "python.pythonPath": "/usr/local/bin/python3",
 }

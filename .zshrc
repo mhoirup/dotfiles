@@ -20,6 +20,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 ZSH_THEME="robbyrussell"
 
 export EDITOR='nvim'
+export VISUAL='nvim'
 
 alias vim='nvim'
 alias ..='cd ..'
@@ -31,9 +32,9 @@ alias files='ranger'
 function gpages {
     cd mhoirup.github.io
     git add .
-    git add -f images
     git commit -m "$1"
     git push -u origin main
+    rake
     cd ..
 }
 

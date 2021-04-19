@@ -19,9 +19,13 @@ fun! ToggleSpelling()
     endif
 endfun
 
-fun! ChangeDate()
-    if expand('%:p:h') == '/Users/marc/mhoirup.github.io/_posts'
-        exe '%s/^date: \d*-\d*-\d*/date: '.strftime('%Y-%m-%d')
-    endif
+fun! UpdateDate()
+    exe '%s/\v^date:\s{-}\zs\S.*$\ze/'.strftime('%Y-%m-%d')
 endfun
+
+" fun! ChangeDate()
+"     if expand('%:p:h') == '/Users/marc/mhoirup.github.io/_posts'
+"         exe '%s/^date: \d*-\d*-\d*/date: '.strftime('%Y-%m-%d')
+"     endif
+" endfun
 

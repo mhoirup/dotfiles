@@ -9,7 +9,7 @@ q <- function(save = 'no', ...) {
 options(repos = structure(c(CRAN = 'https://mirrors.dotsrc.org/cran/')))
 
 look <- function(object) {
-    if (class(object) == 'data.frame') {
+    if ('data.frame' %in% class(object)) {
         if (nrow(object) < 100 && ncol(object) < 10) object
         else if ('dplyr' %in% .packages()) glimpse(object)
         else str(object)
