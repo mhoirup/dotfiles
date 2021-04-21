@@ -22,7 +22,7 @@ look <- function(object) {
     else summary(object)
 }
 
-dsummary <- function(data, digits = 2) {
+dsummary <- function(data, digits = 3) {
     f <- c('min', 'mean', 'max', 'sd'); summaries <- list(
         'categorical' = data.frame(),
         'numeric' = data.frame()
@@ -46,7 +46,6 @@ dsummary <- function(data, digits = 2) {
             descriptors <- as.numeric(sapply(f, do.call, list(x, na.rm = T)))
             summaries$numeric <- rbind(summaries$numeric, data.frame(
                 var = names(data)[i],
-                type = class(x),
                 min = descriptors[1],
                 mean = descriptors[2],
                 max = descriptors[3],

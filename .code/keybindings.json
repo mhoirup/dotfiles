@@ -27,7 +27,7 @@
     }, {
         "key": "shift+f",
         "command": "workbench.action.quickOpen",
-        "when": "editorTextFocus && neovim.mode == 'normal'"
+        "when": "neovim.mode != 'insert'"
     }, {
         "key": "cmd+e",
         "command": "workbench.view.explorer"

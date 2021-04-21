@@ -30,21 +30,28 @@ alias nvim='nvim $(fzf)'
 alias files='ranger'
 
 function gpages {
-    cd mhoirup.github.io
-    git add .
-    git commit -m "$1"
-    git push -u origin main
-    rake
-    cd ..
+    cd ~ # Navigate to the home directory in case it isn't there already
+    cd mhoirup.github.io # Navigate to mhoirup.github.io
+    git add . # Add everything not exluded by .gitignore
+    git commit -m "$1" # Commit changes with function argument as message
+    git branch -M main # Switch to the main branch
+    git push -u origin main # Push to the main branch
+    rake # Builds the site and pushes the proper content to the gh-pages branch
+    git switch main # Switch back the to main branch
+    rm -rf * # Removes all files (since all files are those in gh-pages brach)
+    cd ~ # Navigate back home
+    git clone https://github.com/mhoirup/mhoirup.github.io.git temp # Clone repo
+    mv temp/* mhoirup.github.io # Copy contents of temp into mhoirup.github.io
+    rm -rf temp # Remove the temp dir
 }
 
 function gprojects {
-    cd projects
-    git add credit-card-churn/*.r
-    git add pymetrics/time_series.py pymetrics/cross_section.py pymetrics/utils.py
-    git commit -m "$1"
-    git push -u origin main
-    cd ~
+    cd ~ # Navigate to the home directory in case it isn't there already
+    cd Code # Navigate to ~/Code/
+    git add . # Add everything not exluded by .gitignore
+    git commit -m "$1" # Commit changes with function argument as message
+    git push -u origin main # Push to the main branch
+    cd ~ # Navigate back home
 }
 
 function dotfiles {

@@ -6,14 +6,15 @@ Plug 'SirVer/ultisnips'
 Plug 'Yggdroot/indentLine'
 Plug 'arcticicestudio/nord-vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'jpalardy/vim-slime'
+" Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'kdav5758/TrueZen.nvim'
 Plug 'lervag/vimtex'
-Plug 'tmux-plugins/vim-tmux-focus-events'
+" Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-python/python-syntax'
+" Plug 'vim-python/python-syntax'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'voldikss/vim-floaterm'
 
@@ -40,7 +41,10 @@ nnoremap <S-k> 10k
 nnoremap <S-tab> <<
 nnoremap <TAB> >>
 nnoremap <expr> <silent> q len(getbufinfo({'buflisted':1})) == 1 ? ':up<bar>q!<CR>':':up<bar>bd!<CR>'
-nnoremap <leader>bb caw[<left><C-o>p]<Esc>
+nnoremap <leader>bb caw[<left><C-o>p]<left><BS><ESC>wa<Space><Esc>
+nnoremap <leader>bc caw{<left><C-o>p}<left><BS><ESC>wa<Space><Esc>
+nnoremap <leader>bp caw(<left><C-o>p)<left><BS><ESC>wa<Space><Esc>
+nnoremap <leader>bq caw'<left><C-o>p'<left><BS><ESC>wa<Space><Esc>
 nnoremap <leader>f za
 nnoremap <leader>m :echo 'test'<CR>
 nnoremap <leader>q ciw'<left><C-o>p'<Esc>
@@ -56,11 +60,12 @@ nnoremap <silent> <leader>t :call system('tmux splitw -l 20')<CR>
 nnoremap <silent> åb+ :Buffers<CR>
 nnoremap m q
 tnoremap <Esc> <C-\><C-n>
+vmap <S-Tab> <gv
+vmap <Tab> >gv
 vnoremap <Esc> <C-c>
-vnoremap <S-Tab> <gv
 vnoremap <S-j> 10j
 vnoremap <S-k> 10k
-vnoremap <Tab> >gv
+vnoremap <leader>bp c(<C-o>p)<Esc>F(lxf)a<Space><Esc>
 vnoremap <leader>f zf
 
 command! RunTime FloatermNew ranger /usr/local/Cellar/neovim/HEAD-5b5848f/share/nvim/runtime
@@ -68,7 +73,7 @@ command! RunTime FloatermNew ranger /usr/local/Cellar/neovim/HEAD-5b5848f/share/
 autocmd FileType fzf set laststatus=2
 " autocmd VimEnter * if @% == '' && &ft == '' | Files ~
 autocmd FileType help nmap <buffer> <cr> <c-]>
-autocmd BufRead * if expand('%') == '.Rprofile' | set syntax=r
+autocmd BufRead,BufAdd,BufEnter,BufReadPost * if expand('%') == '.Rprofile' | set syntax=r
 autocmd BufAdd,BufReadPost,BufEnter * filetype detect
 autocmd FileType tex set syntax=tex-custom
 autocmd FileType markdown set syntax=pandoc
