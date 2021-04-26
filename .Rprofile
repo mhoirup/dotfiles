@@ -46,6 +46,7 @@ dsummary <- function(data, digits = 3) {
             descriptors <- as.numeric(sapply(f, do.call, list(x, na.rm = T)))
             summaries$numeric <- rbind(summaries$numeric, data.frame(
                 var = names(data)[i],
+                type = ifelse(all((x %% 1) == 0), 'integer', 'double'),
                 min = descriptors[1],
                 mean = descriptors[2],
                 max = descriptors[3],

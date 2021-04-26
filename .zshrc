@@ -22,6 +22,8 @@ ZSH_THEME="robbyrussell"
 export EDITOR='nvim'
 export VISUAL='nvim'
 
+setopt rmstarsilent
+
 alias vim='nvim'
 alias ..='cd ..'
 alias home='cd ~'
@@ -89,3 +91,4 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # if [ -z $TMUX ]; then; tmux a; fi
+export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"

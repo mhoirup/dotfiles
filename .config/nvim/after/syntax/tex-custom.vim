@@ -45,7 +45,6 @@ endif
     
 " endif
 
-
 " Syntax Specification
 
 " syntax match texFunction '\v\\\zs\w+\ze(\\)@![\{\[]' nextgroup=texArgument

@@ -1,7 +1,7 @@
 {
     "breadcrumbs.enabled": false,
     "window.zoomLevel": -0.3,
-    "customizeUI.font.regular": "Operator Mono Book",
+    "customizeUI.font.regular": "Segoe UI",
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": true,
     "editor.cursorStyle": "line",
@@ -260,4 +260,5 @@
     "workbench.activityBar.visible": false,
     "workbench.startupEditor": "newUntitledFile",
     "python.pythonPath": "/usr/local/bin/python3",
+    "editor.minimap.enabled": false,
 }
