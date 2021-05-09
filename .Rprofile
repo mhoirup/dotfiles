@@ -18,7 +18,7 @@ look <- function(object) {
         if (length(object) <= 200) object
         else str(object)
     }
-    else if (class(object) == 'formula') object
+    else if (any(class(object) == c('formula', 'ggplot'))) object
     else summary(object)
 }
 

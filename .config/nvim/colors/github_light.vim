@@ -2,7 +2,7 @@ hi clear
 if exists('syntax on')
     syntax reset
 endif
-let g:colors_name = 'github'
+let g:colors_name = 'github_light'
 
 let s:black       = '#24292e'
 let s:blue        = '#005cc5'

@@ -30,6 +30,7 @@ alias home='cd ~'
 alias c='clear'
 alias nvim='nvim $(fzf)'
 alias files='ranger'
+# alias tmux='tmux attach'
 
 function gpages {
     cd ~ # Navigate to the home directory in case it isn't there already
@@ -71,6 +72,10 @@ function dotfiles {
     git push -u origin main
 }
 
+function pdf_merge {
+    "/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py" -o ~/Desktop/"$1".pdf ~/Notes/Applications/"$2".pdf ~/Notes/Applications/"$3".pdf
+}
+
 DISABLE_AUTO_UPDATE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
@@ -91,4 +96,4 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # if [ -z $TMUX ]; then; tmux a; fi
-export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
+# export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"

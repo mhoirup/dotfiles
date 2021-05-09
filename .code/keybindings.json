@@ -25,7 +25,7 @@
         "command": "workbench.action.showAllEditors",
         "when": "neovim.mode == normal || inKeybindings"
     }, {
-        "key": "shift+f",
+        "key": "ctrl+f",
         "command": "workbench.action.quickOpen",
         "when": "neovim.mode != 'insert'"
     }, {
@@ -46,7 +46,7 @@
         "key": "space",
         "command": "vscode-neovim.send",
         "args": ":call SendText('python.execSelectionInTerminal')<CR>",
-        "when": "editorTextFocus && neovim.mode != insert && editorLangId == python",
+        "when": "editorTextFocus && neovim.mode == normal && editorLangId == python",
     }, {
         "key": "space",
         "command": "r.runSelection",
@@ -90,14 +90,6 @@
         "args": {"to": "up", "by": "line", "value": 5},
         "when": "editorTextFocus && neovim.mode == normal"
     }, {
-        "key": "shift+l",
-        "command": "workbench.action.nextEditor",
-        "when": "editorTextFocus && neovim.mode != insert"
-    }, {
-        "key": "shift+h",
-        "command": "workbench.action.previousEditor",
-        "when": "editorTextFocus && neovim.mode != insert"
-    }, {
         "key": "j",
         "command": "cursorMove",
         "args": {"to": "down", "by": "line", "value": 1},
@@ -120,6 +112,10 @@
     }, {
         "key": "escape",
         "command": "vscode-neovim.escape",
-        "when": "editorTextFocus && neovim.mode == normal"
-    },
+        "when": "editorTextFocus && neovim.mode != normal"
+    }, {
+        "key": "ctrl+m",
+        // "command": "cursorLineEnd"
+        "command": "replacePreviousChar"
+    }
 ]

@@ -1,7 +1,7 @@
 {
     "breadcrumbs.enabled": false,
     "window.zoomLevel": -0.3,
-    "customizeUI.font.regular": "Segoe UI",
+    "customizeUI.font.regular": "Operator Mono Book",
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": true,
     "editor.cursorStyle": "line",
@@ -11,7 +11,7 @@
     "editor.fontSize": 13.0,
     "editor.hideCursorInOverviewRuler": true,
     "editor.insertSpaces": true,
-    "editor.lineHeight": 21,
+    "editor.lineHeight": 24,
     "editor.occurrencesHighlight": false,
     // "editor.quickSuggestions": { "other": true, "comments": false, "strings": false },
     "editor.quickSuggestionsDelay": 1,
@@ -19,7 +19,7 @@
     "editor.renderWhitespace": "none",
     "editor.trimAutoWhitespace": true,
     "files.trimTrailingWhitespace": true,
-    "editor.colorDecorators": true,
+    "editor.colorDecorators": false,
     "editor.scrollbar.horizontal": "hidden",
     "editor.scrollbar.vertical": "hidden",
     "editor.smoothScrolling": true,
@@ -28,7 +28,7 @@
         "--no-restore",
     ],
     "editor.tabSize": 4,
-    "r.lsp.diagnostics": true,
+    "r.lsp.diagnostics": false,
     "git.decorations.enabled": false,
     "editor.wordBasedSuggestions": false,
     "files.autoSave": "off",
@@ -185,7 +185,7 @@
                 }, {
                     "scope": [ // Cyan
                         "variable.function.r",
-                        // "support.function.r"
+                        "support.function.r"
                     ],
                     "settings": {
                         "foreground": "#88c0d0",
@@ -193,6 +193,13 @@
                 }, {
                     "scope": [ // Yellow
                         "constant.language.r",
+                        "searchEditor.findMatchBorder",
+                        "searchEditor.findMatchBackground",
+                        "searchEditor.textInputBorder",
+                        "theme.editor.findMatchHighlightBackground",
+                        "editor.findMatchBackground",
+                        "editor.findMatchHighlightBackground",
+
                     ],
                     "settings": {
                         "foreground": "#ebcb8b",
@@ -236,7 +243,6 @@
         "Substitute": "vim"
     },
     "launch": {
-
         "configurations": [],
         "compounds": []
     },

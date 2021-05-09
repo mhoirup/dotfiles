@@ -1,50 +1,50 @@
-set hidden
+" set wildmenu
+" set wildmode=longest,list,full
+colorscheme nord
+set autoindent
+set clipboard=unnamed
 set cmdheight=1
-set shortmess+=Otc
 set complete-=t
 set completeopt=menuone,noselect
-" set wildmode=longest,list,full
-" set wildmenu
+set cursorline
+set expandtab
+set foldmethod=manual
 set formatoptions-=r
-let g:python3_host_prog = '/usr/local/bin/python3'
+set hidden
+set ignorecase
+set laststatus=2
+set lazyredraw
+set mouse=a
+set noruler
+set noshowcmd 
+set noshowmode
+set noswapfile
+set nowrap
+set nowrap
+set number
+set shiftwidth=4
+set shortmess+=F
+set shortmess+=Otc
+set showtabline=0
+set signcolumn=yes
+set softtabstop=4
+set splitright
+set statusline=%!MyStatus()
+set tabline=%!MyTabLine()
+set tabstop=4
 
+let g:python3_host_prog = '/usr/local/bin/python3'
 " Dictionary with used repls
 let g:interactive = {
     \ 'python': '\"ipython\"',
     \ 'cython': '\"ipython\"',
     \ 'r'     : '\"R --silent\"'
     \ }
-
 if exists('+termguicolors')
   let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-colorscheme nord
-
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set autoindent
-" set nowrap
-set cursorline
-
-set number
-set noswapfile
-set noruler
-set mouse=a
-set clipboard=unnamed
-set foldmethod=manual
-set splitright
-set laststatus=2
-set statusline=%!MyStatus()
-set tabline=%!MyTabLine()
-
-set noshowmode 
-set noshowcmd 
-set shortmess+=F
-set lazyredraw
 
 if g:colors_name == 'nord'
     hi!      Comment        guifg=#616e88 gui=italic

@@ -2,8 +2,8 @@ if g:colors_name == 'nord'
     hi!      pandocAtxStart           guifg=#ebcb8b
     hi! link pandocAtxHeader          pandocAtxStart
     hi! link yamlPlainScalar          pandocAtxStart
-    hi!      yamlBlockMappingKey      guifg=#b48ead
-    hi! link pandocEmphasis           yamlBlockMappingKey
+    hi!      yamlBlockMappingKey      guifg=#8fbcbb
+    hi!      pandocEmphasis           guifg=#b48ead
     hi!      pandocDelimitedCodeBlock guifg=#a3be8c
     hi! link pandocPipeTableDelims    Type
     hi! link pandocNewLine            VertSplit
